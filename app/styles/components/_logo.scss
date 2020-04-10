@@ -1,0 +1,19 @@
+/**
+* Example of how single component can be styled
+* We create a new scss file for every component
+ */
+
+.logo{
+  width: 400px;
+
+  /**
+ * This is an example of how to use the media queries to target different screen sizes
+  */
+  @include queryThis($xxl){
+    width: 700px;
+  }
+
+  @include queryThis($md){
+    width: 300px;
+  }
+}

@@ -1,0 +1,15 @@
+/**
+* Here we add specific styles for the sub page using its subpage class
+*/
+.subpage{
+  text-align: center;
+  font-size: 3em;
+  padding: 20px;
+
+  /**
+  * This is an example of how to use the variables defined in the file called '_constants.scss'
+   */
+  h1{
+    color: $mainBlue;
+  }
+}

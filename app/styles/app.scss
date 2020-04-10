@@ -1,0 +1,13 @@
+/**
+* This is the main scss file, which include all the other files
+* Every time a new scss file is added using the namin convention {underscore}filename.scss it should be added to this file as an import
+ */
+@import 'base/constants';
+@import 'base/mixins';
+@import 'base/font-faces';
+@import 'base/resets';
+
+@import 'components/logo';
+
+@import 'pageWrappers/frontPage';
+@import 'pageWrappers/subPage';
