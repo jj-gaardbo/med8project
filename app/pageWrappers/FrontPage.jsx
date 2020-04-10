@@ -21,18 +21,20 @@ export default class FrontPage extends React.Component {
 
     render() {
         return (
-            <header className="frontpage">
-                <Logo />
-                <h1>Spillestilen.</h1>
+            <div className="frontpage row">
+                <div className="col-lg-12">
+                    <Logo />
+                    <h1>Spillestilen.</h1>
 
-                <Button className={"btn btn-lg btn-secondary"} handleClick={this.handleButton1Click}>
-                    Button1
-                </Button>
+                    <Button className={"btn btn-lg btn-secondary"} handleClick={this.handleButton1Click}>
+                        Button1
+                    </Button>
 
-                <Button className={"btn btn-lg btn-primary"} handleClick={this.handleButton2Click}>
-                    Button2
-                </Button>
-            </header>
+                    <Button className={"btn btn-lg btn-primary"} handleClick={this.handleButton2Click}>
+                        Button2
+                    </Button>
+                </div>
+            </div>
         )
     }
 }
