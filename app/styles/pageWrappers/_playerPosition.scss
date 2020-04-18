@@ -5,16 +5,6 @@
   text-align: center;
   font-size: 3em;
   height: 100vh;
-  &:before{
-    content: "";
-    display: block;
-    height:50vh;
-    background-color: $mainBlue;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
 
   /**
   * This is an example of how to use the variables defined in the file called '_constants.scss'

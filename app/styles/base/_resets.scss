@@ -48,4 +48,5 @@ table {
 
 html, body{
 	font-family: 'HelveticaNeue-Medium', Arial, sans-serif;
+	@include getBackground();
 }

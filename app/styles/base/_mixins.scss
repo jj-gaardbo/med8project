@@ -16,4 +16,15 @@ $xxl: 'min-width: 1366px';
   }
 }
 
-
+@mixin getBackground(){
+  &:before{
+    content: "";
+    display: block;
+    height:50vh;
+    background-color: $mainBlue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
