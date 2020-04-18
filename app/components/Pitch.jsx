@@ -16,11 +16,17 @@ export default class Pitch extends React.Component {
                 false,
                 false,
                 false
-            ]
+            ],
+            chosenPosition: null
         }
 
         this.disableOverlay = this.disableOverlay.bind(this);
         this.toggleOverlay = this.toggleOverlay.bind(this);
+        this.handleSelection = this.handleSelection.bind(this);
+    }
+
+    handleSelection(select){
+        this.setState({chosenPosition: select});
     }
 
     disableOverlay(){
@@ -50,7 +56,7 @@ export default class Pitch extends React.Component {
                 <Button className={"pull-up btn btn-primary"} handleClick={this.toggleOverlay}>Toggle</Button>
                 <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
                 {this.state.overlays[0] &&
-                    <Selection />
+                    <Selection onSelect={this.handleSelection} highlight={this.state.chosenPosition} />
                 }
 
                 {this.state.overlays[1] &&

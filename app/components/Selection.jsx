@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {POS_KEEPER, POS_CENTERBACK, POS_FULLBACK, POS_CENTERMIDFIELDER, POS_MIDFIELDER, POS_STRIKER} from "./Common.jsx";
 
 export default class Selection extends React.Component {
     constructor(props) {
@@ -71,12 +72,10 @@ export default class Selection extends React.Component {
     }
 
     handleStrikerhover(){
-        console.log("Stiker")
         this.setState({isStrikerHovered:true})
     }
 
     handleStrikerMouseLeave(){
-        console.log("Stiker leave")
         this.setState({isStrikerHovered:false})
     }
 
@@ -90,7 +89,7 @@ export default class Selection extends React.Component {
 
             <svg version="1.1" id="Layer_3" x="0px" y="0px"
                  width="916px" height="1360px" viewBox="0 0 916 1360" enableBackground="new 0 0 916 1360">
-                <Link className={`keeper playerPos ${this.state.isKeeperHovered ? "hovered" : ""}`} to={'/keeper'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_KEEPER)} className={`keeper playerPos${this.state.isKeeperHovered ? " hovered" : ""}${this.props.highlight === POS_KEEPER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
                     <g id="k">
                         <circle fill="#00189A" cx="451.407" cy="1192.848" r="68.182"/>
                         <g>
@@ -113,7 +112,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_CENTERBACK)} className={`center-back playerPos${this.state.isCenterBackHovered ? " hovered" : ""}${this.props.highlight === POS_CENTERBACK ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
                     <g id="cb_1_">
                         <circle fill="#00189A" cx="567.5" cy="895.848" r="68.182"/>
                         <g>
@@ -137,7 +136,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_CENTERBACK)} className={`center-back playerPos${this.state.isCenterBackHovered ? " hovered" : ""}${this.props.highlight === POS_CENTERBACK ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
                     <g id="cb">
                         <circle fill="#00189A" cx="348.5" cy="895.848" r="68.182"/>
                         <g>
@@ -161,7 +160,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_FULLBACK)} className={`full-back playerPos${this.state.isFullBackHovered ? " hovered" : ""}${this.props.highlight === POS_FULLBACK ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
                     <g id="fb_1_">
                         <circle fill="#00189A" cx="786.5" cy="895.848" r="68.182"/>
                         <g>
@@ -185,7 +184,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_FULLBACK)} className={`full-back playerPos${this.state.isFullBackHovered ? " hovered" : ""}${this.props.highlight === POS_FULLBACK ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
                     <g id="fb">
                         <circle fill="#00189A" cx="129.5" cy="895.848" r="68.182"/>
                         <g>
@@ -209,7 +208,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_CENTERMIDFIELDER)} className={`center-midfielder playerPos${this.state.isCenterMidFielderHovered ? " hovered" : ""}${this.props.highlight === POS_CENTERMIDFIELDER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
                     <g id="cmf_1_">
                         <circle fill="#00189A" cx="567.5" cy="678.848" r="68.182"/>
                         <g>
@@ -233,7 +232,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_CENTERMIDFIELDER)} className={`center-midfielder playerPos${this.state.isCenterMidFielderHovered ? " hovered" : ""}${this.props.highlight === POS_CENTERMIDFIELDER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
                     <g id="cmf">
                         <circle fill="#00189A" cx="348.5" cy="678.848" r="68.182"/>
                         <g>
@@ -257,7 +256,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_MIDFIELDER)} className={`midfielder playerPos${this.state.isMidFielderHovered ? " hovered" : ""}${this.props.highlight === POS_MIDFIELDER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
                     <g id="mf_1_">
                         <circle fill="#00189A" cx="786.5" cy="678.848" r="68.182"/>
                         <g>
@@ -281,7 +280,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_MIDFIELDER)} className={`midfielder playerPos${this.state.isMidFielderHovered ? " hovered" : ""}${this.props.highlight === POS_MIDFIELDER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
                     <g id="mf">
                         <circle fill="#00189A" cx="129.5" cy="678.848" r="68.182"/>
                         <g>
@@ -305,7 +304,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_STRIKER)} className={`striker playerPos${this.state.isStrikerHovered ? " hovered" : ""}${this.props.highlight === POS_STRIKER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
                     <g id="s_1_">
                         <circle fill="#00189A" cx="567.5" cy="469.848" r="68.182"/>
                         <g>
@@ -329,7 +328,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
 
-                <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
+                <Link onClick={() => this.props.onSelect(POS_STRIKER)} className={`striker playerPos${this.state.isStrikerHovered ? " hovered" : ""}${this.props.highlight === POS_STRIKER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
                     <g id="s">
                         <circle fill="#00189A" cx="348.5" cy="469.848" r="68.182"/>
                         <g>

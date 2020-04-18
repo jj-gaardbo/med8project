@@ -24,6 +24,13 @@
         fill: $mainRed;
       }
     }
+
+    &.highlight{
+      circle{
+        stroke-width: 15px;
+        stroke: $white;
+      }
+    }
   }
 
   img{
