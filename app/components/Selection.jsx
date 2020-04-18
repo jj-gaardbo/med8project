@@ -89,7 +89,7 @@ export default class Selection extends React.Component {
         return (
 
             <svg version="1.1" id="Layer_3" x="0px" y="0px"
-                 width="916px" height="1360px" viewBox="0 0 916 1360" enable-background="new 0 0 916 1360">
+                 width="916px" height="1360px" viewBox="0 0 916 1360" enableBackground="new 0 0 916 1360">
                 <Link className={`keeper playerPos ${this.state.isKeeperHovered ? "hovered" : ""}`} to={'/keeper'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
                     <g id="k">
                         <circle fill="#00189A" cx="451.407" cy="1192.848" r="68.182"/>

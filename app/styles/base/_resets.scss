@@ -50,3 +50,7 @@ html, body{
 	font-family: 'HelveticaNeue-Medium', Arial, sans-serif;
 	@include getBackground();
 }
+
+.pull-up{
+	margin-top: -90px;
+}
