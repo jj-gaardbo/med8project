@@ -32,6 +32,13 @@
     top: 50%;
     margin-top: -405px;
 
+    @include queryThis($sm){
+      width: 300px;
+      margin-left: -150px;
+      height: 510px;
+      margin-top: -255px;
+    }
+
     .playerPos{
       circle{
         transition: all 0.3s ease;
@@ -57,6 +64,10 @@
       position: absolute;
       left:0;
       top: 0;
+
+      @include queryThis($sm){
+        height: 440px;
+      }
     }
   }
 }
