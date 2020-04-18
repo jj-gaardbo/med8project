@@ -19,7 +19,7 @@ export default class Navigation extends React.Component {
         let paths = Object.values(this.props.children);
         for (let i = 0; i < pages.length; i++) {
             children.push(<li key={i} className={"nav-item"}>
-                <NavLink exact={i === 0 ? 'exact' : ''} className={"nav-link"} to={paths[i]}>{pages[i]}</NavLink>
+                <NavLink exact={i === 0 ? true : false} className={"nav-link"} to={paths[i]}>{pages[i]}</NavLink>
             </li>)
 
         }

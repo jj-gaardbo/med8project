@@ -1,17 +1,15 @@
 import React from 'react';
-import Logo from "../components/Logo.jsx";
-
+import PitchSelection from "../components/PitchSelection.jsx";
 
 /**
  * This is a simple example of a simple subpage
  */
-export default class SubPage extends React.Component {
+export default class PlayerPosition extends React.Component {
     render() {
         return (
-            <div className="subpage row">
+            <div className="player_position row">
                 <div className="col-lg-12">
-                    <Logo />
-                    <h1>This is a sub page.</h1>
+                    <PitchSelection/>
                 </div>
             </div>
         )

@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from "../components/Logo.jsx";
-import Button from "../components/Button.jsx";
-
+import {Link} from "react-router-dom";
 
 /**
  * This is the Home page file / index
@@ -26,13 +25,9 @@ export default class FrontPage extends React.Component {
                     <Logo />
                     <h1>Spillestilen.</h1>
 
-                    <Button className={"btn btn-lg btn-secondary"} handleClick={this.handleButton1Click}>
-                        Button1
-                    </Button>
-
-                    <Button className={"btn btn-lg btn-primary"} handleClick={this.handleButton2Click}>
-                        Button2
-                    </Button>
+                    <Link className={"btn btn-lg btn-secondary"} to={"/position"}>
+                        Spiller
+                    </Link>
                 </div>
             </div>
         )

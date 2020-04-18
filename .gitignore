@@ -46,3 +46,5 @@ package-lock.json
 syntax: regexp
 
 app/data/
+
+app/data.zip

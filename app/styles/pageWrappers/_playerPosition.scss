@@ -1,0 +1,62 @@
+/**
+* Here we add specific styles for the sub page using its subpage class
+*/
+.player_position{
+  text-align: center;
+  font-size: 3em;
+  height: 100vh;
+  &:before{
+    content: "";
+    display: block;
+    height:50vh;
+    background-color: $mainBlue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  /**
+  * This is an example of how to use the variables defined in the file called '_constants.scss'
+   */
+  h1{
+    color: $white;
+  }
+
+  .pitch_selection{
+    position: relative;
+    width: 500px;
+    height: 740px;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -405px;
+
+    .playerPos{
+      circle{
+        transition: all 0.3s ease;
+      }
+
+      &.hovered{
+        circle{
+          fill: red;
+        }
+      }
+    }
+
+    img{
+      max-width: 100%;
+      position: absolute;
+      left:0;
+      top: 0;
+    }
+
+    svg{
+      height: 740px;
+      max-width: 100%;
+      position: absolute;
+      left:0;
+      top: 0;
+    }
+  }
+}
