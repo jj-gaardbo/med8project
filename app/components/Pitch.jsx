@@ -26,7 +26,11 @@ export default class Pitch extends React.Component {
     }
 
     handleSelection(select){
-        this.setState({chosenPosition: select});
+        if(select === this.state.chosenPosition){
+            this.setState({chosenPosition: null});
+        } else {
+            this.setState({chosenPosition: select});
+        }
     }
 
     disableOverlay(){
