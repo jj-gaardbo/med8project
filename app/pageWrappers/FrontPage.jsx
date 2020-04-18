@@ -6,18 +6,6 @@ import {Link} from "react-router-dom";
  * This is the Home page file / index
  */
 export default class FrontPage extends React.Component {
-
-    /**
-     * These two methods is an example of how functionality can be added to an instance of the Button component
-     */
-    handleButton1Click(){
-        alert("Button1 was clicked")
-    }
-
-    handleButton2Click(){
-        alert("Button2 was clicked")
-    }
-
     render() {
         return (
             <div className="frontpage row">
@@ -25,7 +13,7 @@ export default class FrontPage extends React.Component {
                     <Logo />
                     <h1>Spillestilen.</h1>
 
-                    <Link className={"btn btn-lg btn-secondary"} to={"/position"}>
+                    <Link className={"btn btn-lg btn-secondary"} to={"/player"}>
                         Spiller
                     </Link>
                 </div>

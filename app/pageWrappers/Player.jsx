@@ -1,15 +1,15 @@
 import React from 'react';
-import PitchSelection from "../components/PitchSelection.jsx";
+import Pitch from "../components/Pitch.jsx";
 
 /**
  * This is a simple example of a simple subpage
  */
-export default class PlayerPosition extends React.Component {
+export default class Player extends React.Component {
     render() {
         return (
-            <div className="player_position row">
+            <div className="player row">
                 <div className="col-lg-12">
-                    <PitchSelection/>
+                    <Pitch/>
                 </div>
             </div>
         )

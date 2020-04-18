@@ -1,10 +1,7 @@
-import pitchBackground from "../data/images/SoccerPitchPortrait.png";
-import React from "react";
-import $ from "jquery"
+import React from 'react';
 import {Link} from "react-router-dom";
 
-export default class PitchSelection extends React.Component {
-
+export default class Selection extends React.Component {
     constructor(props) {
         super(props);
 
@@ -90,13 +87,11 @@ export default class PitchSelection extends React.Component {
 
     render() {
         return (
-            <div className="pitch_selection">
-                <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
 
-                <svg version="1.1" id="Layer_3" x="0px" y="0px"
-                     width="916px" height="1360px" viewBox="0 0 916 1360" enable-background="new 0 0 916 1360">
-                    <Link className={`keeper playerPos ${this.state.isKeeperHovered ? "hovered" : ""}`} to={'/keeper'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
-                        <g id="k">
+            <svg version="1.1" id="Layer_3" x="0px" y="0px"
+                 width="916px" height="1360px" viewBox="0 0 916 1360" enable-background="new 0 0 916 1360">
+                <Link className={`keeper playerPos ${this.state.isKeeperHovered ? "hovered" : ""}`} to={'/keeper'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
+                    <g id="k">
                         <circle fill="#00189A" cx="451.407" cy="1192.848" r="68.182"/>
                         <g>
                             <g>
@@ -116,10 +111,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
-                        <g id="cb_1_">
+                <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
+                    <g id="cb_1_">
                         <circle fill="#00189A" cx="567.5" cy="895.848" r="68.182"/>
                         <g>
                             <g>
@@ -140,16 +135,16 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
-                        <g id="cb">
-                            <circle fill="#00189A" cx="348.5" cy="895.848" r="68.182"/>
+                <Link className={`center-back playerPos ${this.state.isCenterBackHovered ? "hovered" : ""}`} to={'/center_back'} onMouseEnter={() => this.handleCenterBackhover()} onMouseLeave={() => this.handleCenterBackMouseLeave()}>
+                    <g id="cb">
+                        <circle fill="#00189A" cx="348.5" cy="895.848" r="68.182"/>
+                        <g>
                             <g>
                                 <g>
-                                    <g>
-                                        <path fill="#F5F7FA" d="M394.143,883c-0.021-0.04-0.05-0.07-0.079-0.1h0.01C394.103,882.93,394.122,882.96,394.143,883z"/>
-                                        <path fill="#F5F7FA" d="M360,862h-32.827c-2.061,0-3.85,0.62-5.301,2.08l-15.609,15.5l-3.32,3.32
+                                    <path fill="#F5F7FA" d="M394.143,883c-0.021-0.04-0.05-0.07-0.079-0.1h0.01C394.103,882.93,394.122,882.96,394.143,883z"/>
+                                    <path fill="#F5F7FA" d="M360,862h-32.827c-2.061,0-3.85,0.62-5.301,2.08l-15.609,15.5l-3.32,3.32
                         c-0.251,0.232-0.252,0.646,0,0.879l13.301,13.311c0.229,0.23,0.58,0.25,0.83,0.061l3.789-2.961
                         c0.83-0.828,2.205-0.689,2.866,0.279c0.485,0.713,0.272,1.744,0.272,2.566c0,1.702,0,3.404,0,5.107c0,4.039,0,8.078,0,12.118
                         c0,5.243,0,10.487,0,15.731c0,0.002,0,0.005,0,0.008h49c0-5.084,0-10.168,0-15.251c0-4.052,0-8.104,0-12.155
@@ -158,16 +153,16 @@ export default class PitchSelection extends React.Component {
                         c0.204-0.204,0.24-0.539,0.08-0.779c-0.021-0.04-0.049-0.07-0.079-0.1l-3.32-3.32l-15.621-15.5
                         c-1.459-1.46-3.25-2.08-5.299-2.08H360 M359.612,864.18c-1.668,4.662-5.658,10.03-11.119,10.03
                         c-5.463,0-9.592-5.342-11.271-10.03l-0.06-0.18h22.51L359.612,864.18z"/>
-                                        <path fill="#F5F7FA" d="M360.093,861.779V862h-0.01C360.093,861.93,360.093,861.85,360.093,861.779z"/>
-                                        <polygon fill="#F5F7FA" points="360.122,861.79 360.093,861.779 360.093,861.77 				"/>
-                                    </g>
+                                    <path fill="#F5F7FA" d="M360.093,861.779V862h-0.01C360.093,861.93,360.093,861.85,360.093,861.779z"/>
+                                    <polygon fill="#F5F7FA" points="360.122,861.79 360.093,861.779 360.093,861.77 				"/>
                                 </g>
                             </g>
                         </g>
-                    </Link>
+                    </g>
+                </Link>
 
-                    <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
-                        <g id="fb_1_">
+                <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
+                    <g id="fb_1_">
                         <circle fill="#00189A" cx="786.5" cy="895.848" r="68.182"/>
                         <g>
                             <g>
@@ -188,10 +183,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
-                        <g id="fb">
+                <Link className={`full-back playerPos ${this.state.isFullBackHovered ? "hovered" : ""}`} to={'/full_back'} onMouseEnter={() => this.handleFullBackhover()} onMouseLeave={() => this.handleFullBackMouseLeave()}>
+                    <g id="fb">
                         <circle fill="#00189A" cx="129.5" cy="895.848" r="68.182"/>
                         <g>
                             <g>
@@ -212,10 +207,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
-                        <g id="cmf_1_">
+                <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
+                    <g id="cmf_1_">
                         <circle fill="#00189A" cx="567.5" cy="678.848" r="68.182"/>
                         <g>
                             <g>
@@ -236,10 +231,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
-                        <g id="cmf">
+                <Link className={`center-midfielder playerPos ${this.state.isCenterMidFielderHovered ? "hovered" : ""}`} to={'/center-midfielder'} onMouseEnter={() => this.handleCenterMidFielderhover()} onMouseLeave={() => this.handleCenterMidFielderMouseLeave()}>
+                    <g id="cmf">
                         <circle fill="#00189A" cx="348.5" cy="678.848" r="68.182"/>
                         <g>
                             <g>
@@ -260,10 +255,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
-                        <g id="mf_1_">
+                <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
+                    <g id="mf_1_">
                         <circle fill="#00189A" cx="786.5" cy="678.848" r="68.182"/>
                         <g>
                             <g>
@@ -284,10 +279,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
-                        <g id="mf">
+                <Link className={`midfielder playerPos ${this.state.isMidFielderHovered ? "hovered" : ""}`} to={'/midfielder'} onMouseEnter={() => this.handleMidFielderhover()} onMouseLeave={() => this.handleMidFielderMouseLeave()}>
+                    <g id="mf">
                         <circle fill="#00189A" cx="129.5" cy="678.848" r="68.182"/>
                         <g>
                             <g>
@@ -308,10 +303,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
-                        <g id="s_1_">
+                <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
+                    <g id="s_1_">
                         <circle fill="#00189A" cx="567.5" cy="469.848" r="68.182"/>
                         <g>
                             <g>
@@ -332,10 +327,10 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
+                </Link>
 
-                    <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
-                        <g id="s">
+                <Link className={`striker playerPos ${this.state.isStrikerHovered ? "hovered" : ""}`} to={'/striker'} onMouseEnter={() => this.handleStrikerhover()} onMouseLeave={() => this.handleStrikerMouseLeave()}>
+                    <g id="s">
                         <circle fill="#00189A" cx="348.5" cy="469.848" r="68.182"/>
                         <g>
                             <g>
@@ -356,10 +351,8 @@ export default class PitchSelection extends React.Component {
                             </g>
                         </g>
                     </g>
-                    </Link>
-                </svg>
-
-            </div>
+                </Link>
+            </svg>
         )
     }
 }

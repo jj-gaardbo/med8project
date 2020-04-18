@@ -6,7 +6,7 @@ import {
     NavLink
 } from "react-router-dom";
 import FrontPage from "./FrontPage.jsx";
-import PlayerPosition from "./playerPosition.jsx";
+import Player from "./Player.jsx";
 import Navigation from "../components/Navigation.jsx";
 
 /**
@@ -16,7 +16,7 @@ import Navigation from "../components/Navigation.jsx";
  */
 const pages = {
     "Home":"/",
-    "Position":"/position"
+    "Player":"/player"
 };
 export default class Main extends React.Component {
     render() {
@@ -33,8 +33,8 @@ export default class Main extends React.Component {
                         <Route path={pages.Home} exact>
                             <FrontPage/>
                         </Route>
-                        <Route path={pages.Position}>
-                            <PlayerPosition/>
+                        <Route path={pages.Player}>
+                            <Player/>
                         </Route>
                     </Switch>
                 </div>
