@@ -15,6 +15,10 @@
     margin-top: -255px;
   }
 
+  @include queryThis($xs){
+    height: 440px;
+  }
+
   .playerPos{
     circle{
       transition: all 0.3s ease;

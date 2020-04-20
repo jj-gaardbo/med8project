@@ -1,6 +1,9 @@
 $phase-navigation-width: 230px;
 $phase-navigation-icon-size: 60px;
 
+$phase-navigation-width-mob: 210px;
+$phase-navigation-icon-size-mob: 30px;
+
 .phase-nav{
   width: calc(#{$phase-navigation-width} + #{$standardPadding * 4.5});
   display: table-row;
@@ -16,8 +19,18 @@ $phase-navigation-icon-size: 60px;
   @include boxSize();
   padding: 20px 12px;
 
+  @include queryThis($xs){
+    padding: 20px 5px;
+    width: calc(#{$phase-navigation-width-mob} + #{$standardPadding * 3});
+    left: calc(100vw - (#{$phase-navigation-icon-size-mob} + #{$standardPadding / 2.5}));
+  }
+
   &:hover{
     left: calc(100vw - (#{$phase-navigation-width} + #{$standardPadding * 5}));
+
+    @include queryThis($xs){
+      left: calc(100vw - (#{$phase-navigation-width-mob} + #{$standardPadding * 2}));
+    }
   }
 
   ul {
@@ -29,6 +42,10 @@ $phase-navigation-icon-size: 60px;
 
     li{
       margin: 0 0 40px 0;
+
+      @include queryThis($xs){
+        margin: 0 0 6px 0;
+      }
     }
   }
 
