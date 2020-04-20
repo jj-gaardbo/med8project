@@ -18,6 +18,7 @@ $phase-navigation-icon-size-mob: 30px;
   transition: all 0.3s ease;
   @include boxSize();
   padding: 20px 12px;
+  opacity: 0.5;
 
   @include queryThis($xs){
     padding: 20px 5px;
@@ -26,6 +27,7 @@ $phase-navigation-icon-size-mob: 30px;
   }
 
   &:hover{
+    opacity: 0.95;
     left: calc(100vw - (#{$phase-navigation-width} + #{$standardPadding * 5}));
 
     @include queryThis($xs){
@@ -39,6 +41,9 @@ $phase-navigation-icon-size-mob: 30px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    @include queryThis($xs){
+      margin-top: -10px;
+    }
 
     li{
       margin: 0 0 40px 0;
@@ -61,6 +66,10 @@ $phase-navigation-icon-size-mob: 30px;
     text-align: left;
     border-radius: 0;
     position: relative;
+
+    @include queryThis($xs){
+      padding: 5px 0;
+    }
 
     &:active {
       outline: none!important;
