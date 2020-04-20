@@ -16,7 +16,6 @@ export default class Selection extends React.Component {
         }
 
         //Bind the new methods to this current object
-        this.handleClick = this.handleClick.bind(this);
         this.handleKeeperhover = this.handleKeeperhover.bind(this);
         this.handleKeeperMouseLeave = this.handleKeeperMouseLeave.bind(this)
         this.handleCenterBackhover = this.handleCenterBackhover.bind(this);
@@ -77,11 +76,6 @@ export default class Selection extends React.Component {
 
     handleStrikerMouseLeave(){
         this.setState({isStrikerHovered:false})
-    }
-
-
-    handleClick(){
-        this.props.handleClick();
     }
 
     render() {

@@ -5,6 +5,7 @@ import Channels from "./Channels.jsx";
 import ZonesDef from "./ZonesDef.jsx";
 import ZonesOff from "./ZonesOff.jsx";
 import Button from "./Button.jsx";
+import {PHASE_DEF, PHASE_OFF} from "./Common.jsx";
 
 export default class Pitch extends React.Component {
     constructor(props) {
@@ -17,20 +18,29 @@ export default class Pitch extends React.Component {
                 false,
                 false
             ],
+            chosenPhase: null,
             chosenPosition: null
         }
 
         this.disableOverlay = this.disableOverlay.bind(this);
         this.toggleOverlay = this.toggleOverlay.bind(this);
-        this.handleSelection = this.handleSelection.bind(this);
+        this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
+        this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
     }
 
-    handleSelection(select){
+    handlePlayerSelection(select){
         if(select === this.state.chosenPosition){
             this.setState({chosenPosition: null});
+            this.props.handlePlayerSelection(null);
         } else {
             this.setState({chosenPosition: select});
+            this.props.handlePlayerSelection(select);
         }
+    }
+
+    handlePhaseSelection(select){
+        this.setState({chosenPhase: select});
+        this.props.handlePhaseSelection(select);
     }
 
     disableOverlay(){
@@ -57,10 +67,12 @@ export default class Pitch extends React.Component {
     render() {
         return (
             <div className="pitch_selection pitch">
+
                 <Button className={"pull-up btn btn-primary"} handleClick={this.toggleOverlay}>Toggle</Button>
+
                 <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
                 {this.state.overlays[0] &&
-                    <Selection onSelect={this.handleSelection} highlight={this.state.chosenPosition} />
+                    <Selection onSelect={this.handlePlayerSelection} highlight={this.state.chosenPosition} />
                 }
 
                 {this.state.overlays[1] &&

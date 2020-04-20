@@ -1,0 +1,87 @@
+$phase-navigation-width: 230px;
+$phase-navigation-icon-size: 60px;
+
+.phase-nav{
+  width: calc(#{$phase-navigation-width} + #{$standardPadding * 4.5});
+  display: table-row;
+  position: fixed;
+  z-index: 3;
+  @include boxShadow();
+  background-color: $black;
+  color: $white;
+  height: 100vh;
+  top: 0;
+  left: calc(100vw - (#{$phase-navigation-icon-size} + #{$standardPadding / 2}));
+  transition: all 0.3s ease;
+  @include boxSize();
+  padding: 20px 12px;
+
+  &:hover{
+    left: calc(100vw - (#{$phase-navigation-width} + #{$standardPadding * 5}));
+  }
+
+  ul {
+    margin-top: -5px;
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    li{
+      margin: 0 0 40px 0;
+    }
+  }
+
+  button{
+    width: 100%;
+    color: $white;
+    font-size: 16px;
+    line-height: 32px;
+    margin: 0;
+    padding: $standardPadding 0;
+    background: none;
+    border: none!important;
+    text-align: left;
+    border-radius: 0;
+    position: relative;
+
+    &:active {
+      outline: none!important;
+      border: none!important;
+    }
+
+    &:focus {outline:none!important;}
+
+    &.chosen{
+      color: $mainRed;
+
+      svg{
+        background-color: $white;
+        border-radius: 50%;
+      }
+    }
+
+    &:hover{
+      background: none;
+
+      &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+      }
+    }
+
+    svg{
+      padding: 5px;
+      float: left;
+      width: 30px!important;
+      height: 30px!important;
+      margin-right: 20px;
+    }
+  }
+}
