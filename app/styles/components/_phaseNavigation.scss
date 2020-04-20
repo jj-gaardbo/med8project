@@ -18,7 +18,7 @@ $phase-navigation-icon-size-mob: 30px;
   transition: all 0.3s ease;
   @include boxSize();
   padding: 20px 12px;
-  opacity: 0.5;
+  opacity: 0.3;
 
   @include queryThis($xs){
     padding: 20px 5px;
