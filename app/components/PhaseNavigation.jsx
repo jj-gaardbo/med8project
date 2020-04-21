@@ -13,52 +13,62 @@ import {
 } from "./Common.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLevelUpAlt, faLevelDownAlt, faBatteryQuarter, faBatteryHalf, faBatteryFull, faThermometerFull, faThermometerHalf,faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+    PHASE_DEF_CONVERSION_STRING,
+    PHASE_DEF_FIELD_DEFENCE_STRING,
+    PHASE_DEF_HIGH_PRESSURE_STRING,
+    PHASE_DEF_MEDIUM_LOW_PRESSURE_STRING,
+    PHASE_OFF_CONVERSION_STRING,
+    PHASE_OFF_PHASE_1_STRING,
+    PHASE_OFF_PHASE_2_STRING,
+    PHASE_OFF_PHASE_3_STRING
+} from "./Common.jsx";
 
 const phases = [
     {
-        "name" : "Afslutningsspil Fase 3",
+        "name" : PHASE_OFF_PHASE_3_STRING,
         "icon" : faBatteryFull,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_PHASE_3
     },
     {
-        "name" : "Opbygningsspil Fase 2",
+        "name" : PHASE_OFF_PHASE_2_STRING,
         "icon" : faBatteryHalf,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_PHASE_2
     },
     {
-        "name" : "Opbygningsspil Fase 1",
+        "name" : PHASE_OFF_PHASE_1_STRING,
         "icon" : faBatteryQuarter,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_PHASE_1
     },
     {
-        "name" : "Omstilling offensivt",
+        "name" : PHASE_OFF_CONVERSION_STRING,
         "icon" : faLevelUpAlt,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_CONVERSION
     },
     {
-        "name" : "Omstilling defensivt",
+        "name" : PHASE_DEF_CONVERSION_STRING,
         "icon" : faLevelDownAlt,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_CONVERSION
     },
     {
-        "name" : "Højt pres",
+        "name" : PHASE_DEF_HIGH_PRESSURE_STRING,
         "icon" : faThermometerFull,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_HIGH_PRESSURE
     },
     {
-        "name" : "Mellem/lavt pres",
+        "name" : PHASE_DEF_MEDIUM_LOW_PRESSURE_STRING,
         "icon" : faThermometerHalf,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_MEDIUM_LOW_PRESSURE
     },
     {
-        "name" : "Forsvaring af felt",
+        "name" : PHASE_DEF_FIELD_DEFENCE_STRING,
         "icon" : faShieldAlt,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_FIELD_DEFENCE

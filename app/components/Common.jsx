@@ -28,3 +28,26 @@ export const PHASE_OFF_PHASE_2_STRING = "Opbygningsspil Fase 2";
 export const PHASE_OFF_PHASE_3_STRING = "Afslutningsspil Fase 3";
 export const PHASE_OFF_CONVERSION_STRING = "Omstilling offensivt";
 
+export function getPhaseTitle(phase_id){
+    switch (phase_id) {
+        case PHASE_DEF_HIGH_PRESSURE:
+            return PHASE_DEF_HIGH_PRESSURE_STRING;
+        case PHASE_DEF_MEDIUM_LOW_PRESSURE:
+            return PHASE_DEF_MEDIUM_LOW_PRESSURE_STRING;
+        case PHASE_DEF_FIELD_DEFENCE:
+            return PHASE_DEF_FIELD_DEFENCE_STRING;
+        case PHASE_DEF_CONVERSION:
+            return PHASE_DEF_CONVERSION_STRING;
+        case PHASE_OFF_PHASE_1:
+            return PHASE_OFF_PHASE_1_STRING;
+        case PHASE_OFF_PHASE_2:
+            return PHASE_OFF_PHASE_2_STRING;
+        case PHASE_OFF_PHASE_3:
+            return PHASE_OFF_PHASE_3_STRING;
+        case PHASE_OFF_CONVERSION:
+            return PHASE_OFF_CONVERSION_STRING;
+        default:
+            return "";
+    }
+}
+
