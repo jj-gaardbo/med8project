@@ -17,3 +17,14 @@ export const PHASE_OFF_PHASE_1 = 14;
 export const PHASE_OFF_PHASE_2 = 15;
 export const PHASE_OFF_PHASE_3 = 16;
 export const PHASE_OFF_CONVERSION = 17;
+
+export const PHASE_DEF_HIGH_PRESSURE_STRING = "Højt pres";
+export const PHASE_DEF_MEDIUM_LOW_PRESSURE_STRING = "Mellem/lavt pres";
+export const PHASE_DEF_FIELD_DEFENCE_STRING = "Forsvaring af felt";
+export const PHASE_DEF_CONVERSION_STRING = "Omstilling defensivt";
+
+export const PHASE_OFF_PHASE_1_STRING = "Opbygningsspil Fase 1";
+export const PHASE_OFF_PHASE_2_STRING = "Opbygningsspil Fase 2";
+export const PHASE_OFF_PHASE_3_STRING = "Afslutningsspil Fase 3";
+export const PHASE_OFF_CONVERSION_STRING = "Omstilling offensivt";
+

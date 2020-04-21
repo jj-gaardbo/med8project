@@ -78,9 +78,11 @@ export default class DataHandler extends React.Component {
 
     render() {
         return (
-            <p style={{fontSize: "12px"}}>
-
-            </p>
+            <div style={{fontSize: "12px"}}>
+                {this.state.playerRole && this.state.phaseSelection &&
+                    <div dangerouslySetInnerHTML={{__html: this.state.playerRole.toHtml(this.state.phaseSelection)}}/>
+                }
+            </div>
         )
     }
 }
