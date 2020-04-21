@@ -8,7 +8,7 @@ $phase-navigation-icon-size-mob: 30px;
   width: calc(#{$phase-navigation-width} + #{$standardPadding * 4.5});
   display: table-row;
   position: fixed;
-  z-index: 3;
+  z-index: 1051;
   @include boxShadow();
   background-color: $black;
   color: $white;
