@@ -4,6 +4,7 @@ import {POS_KEEPER, POS_CENTERBACK, POS_FULLBACK, POS_CENTERMIDFIELDER, POS_MIDF
 import {PHASE_DEF, PHASE_OFF} from "../components/Common.jsx";
 import PhaseNavigation from "../components/PhaseNavigation.jsx";
 import DataHandler from "../components/DataHandler.jsx";
+import ModalElement from "../components/Modal.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -14,11 +15,18 @@ export default class Player extends React.Component {
         this.state = {
             playerSelection: null,
             phaseCategorySelection: null,
-            phaseSelection: null
+            phaseSelection: null,
+            playerObject: null
         }
 
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
         this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
+        this.handleReturnPlayer = this.handleReturnPlayer.bind(this);
+
+    }
+
+    handleReturnPlayer(player){
+        this.setState({playerObject : player});
     }
 
     handlePlayerSelection(selection){
@@ -71,9 +79,16 @@ export default class Player extends React.Component {
         return (
             <div className="player row">
                 <div className="col-lg-12">
-                    <DataHandler ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
+                    <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
-                    <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}></PhaseNavigation>
+
+                    {this.state.playerObject && this.state.phaseSelection &&
+                    <ModalElement title={"Din rolle"}>
+                        <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                    </ModalElement>
+                    }
+
+                    <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}/>
                 </div>
             </div>
         )

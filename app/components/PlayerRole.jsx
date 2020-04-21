@@ -26,18 +26,18 @@ export default class PlayerRole{
         let listDOM = "<h1>";
         listDOM += getPhaseTitle(phase_id);
         listDOM += "</h1>";
-        listDOM += "<ul>";
+        listDOM += "<ul class='list-group list-group-root'>";
         if(parseInt(phase_id) === PHASE_OFF_CONVERSION) {
             let phaseKeys = Object.keys(data);
             for(let k = 0; k < phaseKeys.length; k++){
-                listDOM += "<li>";
+                listDOM += "<li class='list-group-item'>";
                 listDOM += "<span key='" + k + "' class='phase_item_" + phase_id + "'>";
                 listDOM += "<strong>";
                 listDOM += phaseKeys[k];
                 listDOM += "</strong>";
-                listDOM += "<ul class='phase_sub_list'>";
+                listDOM += "<ul class='list-group phase_sub_list'>";
                 this.objectMap(data[phaseKeys[k]], (v) => {
-                    listDOM += "<li>";
+                    listDOM += "<li class='list-group-item'>";
                     listDOM += v;
                     listDOM += "</li>";
                 })
@@ -47,7 +47,7 @@ export default class PlayerRole{
             }
         } else {
             for(let k = 0; k < data.length; k++){
-                listDOM += "<li>";
+                listDOM += "<li class='list-group-item'>";
                 listDOM += "<span key='" + k + "' class='phase_item_" + phase_id + "'>";
                 listDOM += data[k];
                 listDOM += "</span>";

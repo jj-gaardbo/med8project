@@ -23,9 +23,9 @@ export default class Main extends React.Component {
         return (
             <Router>
                 <div className="container-fluid">
-                    <Navigation>
+{/*                    <Navigation>
                         {pages}
-                    </Navigation>
+                    </Navigation>*/}
 
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

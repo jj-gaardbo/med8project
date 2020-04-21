@@ -60,6 +60,7 @@ export default class DataHandler extends React.Component {
     createPlayerRole(player_data){
         let player = new PlayerRole(player_data);
         this.setState({playerRole: player});
+        this.props.handleReturnPlayer(player);
     }
 
     readJson(){
@@ -78,11 +79,7 @@ export default class DataHandler extends React.Component {
 
     render() {
         return (
-            <div style={{fontSize: "12px"}}>
-                {this.state.playerRole && this.state.phaseSelection &&
-                    <div dangerouslySetInnerHTML={{__html: this.state.playerRole.toHtml(this.state.phaseSelection)}}/>
-                }
-            </div>
+            <span className={"datahandler"}/>
         )
     }
 }
