@@ -3,6 +3,7 @@ import Pitch from "../components/Pitch.jsx";
 import {POS_KEEPER, POS_CENTERBACK, POS_FULLBACK, POS_CENTERMIDFIELDER, POS_MIDFIELDER, POS_STRIKER} from "../components/Common.jsx";
 import {PHASE_DEF, PHASE_OFF} from "../components/Common.jsx";
 import PhaseNavigation from "../components/PhaseNavigation.jsx";
+import DataHandler from "../components/DataHandler.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -21,7 +22,9 @@ export default class Player extends React.Component {
     }
 
     handlePlayerSelection(selection){
-        this.setState({playerSelection: selection});
+        this.setState({playerSelection: selection}, function(){
+            this.refs.datahandler.update(this.state);
+        });
         switch(selection){
             case POS_KEEPER:
                 console.log("Keeper chosen");
@@ -48,13 +51,15 @@ export default class Player extends React.Component {
     }
 
     handlePhaseSelection(phase_id, phase_cat){
-        this.setState({phaseCategorySelection: phase_cat, phaseSelection: phase_id});
+        this.setState({phaseCategorySelection: phase_cat, phaseSelection: phase_id},function(){
+            this.refs.datahandler.update(this.state);
+        });
         switch(phase_cat){
             case PHASE_DEF:
-                console.log("Defence selected"+ phase_id);
+                console.log("Defence selected "+ phase_id);
                 break;
             case PHASE_OFF:
-                console.log("Offence selected"+ phase_id);
+                console.log("Offence selected "+ phase_id);
                 break;
             default:
                 console.log("NULL");
@@ -66,6 +71,7 @@ export default class Player extends React.Component {
         return (
             <div className="player row">
                 <div className="col-lg-12">
+                    <DataHandler ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}></PhaseNavigation>
                 </div>

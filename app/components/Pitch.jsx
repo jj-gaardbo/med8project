@@ -13,7 +13,7 @@ export default class Pitch extends React.Component {
         this.state = {
             index:0,
             overlays: [
-                false,
+                true,
                 false,
                 false,
                 false
@@ -50,7 +50,7 @@ export default class Pitch extends React.Component {
     toggleOverlay(){
         this.disableOverlay();
 
-        if(this.state.index < this.state.overlays.length){
+        if(this.state.index+1 < this.state.overlays.length){
             this.setState({index: this.state.index+1});
         }
         else {
