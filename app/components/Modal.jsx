@@ -1,32 +1,43 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {getPhaseTitle} from "./Common.jsx";
+import ButtonModal from "./ButtonModal.jsx";
 
-const ModalElement = (props) => {
-    const {
-        title,
-        phaseSelection
-    } = props;
+export default class ModalElement extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        }
 
-    const [modal, setModal] = useState(false);
+        this.toggle = this.toggle.bind(this);
+    }
 
-    const toggle = () => setModal(!modal);
+    toggle(){
+        this.setState({isOpen: !this.state.isOpen});
+    }
 
-    const phaseString = getPhaseTitle(phaseSelection)
+    render(){
+        const {
+            title,
+            phaseSelection
+        } = this.props;
 
-    return (
-        <div className={"modal-button"}>
-            <div onClick={toggle}><button>{title}</button></div>
-            <Modal isOpen={modal} toggle={toggle} className={"modal-component modal-lg"}>
-                {title !== "" &&
-                    <ModalHeader toggle={toggle}>{title} - {phaseString && phaseString}</ModalHeader>
-                }
-                <ModalBody>
-                    {props.children}
-                </ModalBody>
-            </Modal>
-        </div>
-    );
+        const phaseString = getPhaseTitle(phaseSelection)
+
+        return(
+            <div className={"modal-button"}>
+                <ButtonModal handleClick={this.toggle} className={`modal-button ${this.state.isOpen ? "modal-is-open" : ""}`}>{title}</ButtonModal>
+                <Modal isOpen={this.state.isOpen} toggle={this.toggle} className={"modal-component modal-lg"}>
+                    {title !== "" &&
+                    <ModalHeader toggle={this.toggle}>{title} - {phaseString && phaseString}</ModalHeader>
+                    }
+                    <ModalBody>
+                        {this.props.children}
+                    </ModalBody>
+                </Modal>
+            </div>
+        );
+    }
+
 }
-
-export default ModalElement;

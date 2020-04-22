@@ -5,19 +5,28 @@
   left:0;
   width: 100%;
   background: black;
-  height: $headerComponentHeight;
+  min-height: $headerComponentHeight;
 
   .modal-button{
-    padding: 15px $standardPadding;
+    padding: 10px $standardPadding;
     display: inline-block;
 
+    &.modal-is-open{
+      background-color: $white;
+      border-radius: 15px;
+      color: $mainRed;
+    }
+
     button{
-      border: none;
-      background: none;
+
+      border-radius: 15px;
       color: $white;
 
+      border: none;
+      background: none;
+
       &:hover{
-        border-bottom: 3px solid $white;
+        background-color: $mainBlue;
         cursor: pointer;
       }
     }
