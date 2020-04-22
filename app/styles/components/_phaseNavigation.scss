@@ -1,5 +1,5 @@
 $phase-navigation-width: 230px;
-$phase-navigation-icon-size: 60px;
+$phase-navigation-icon-size: 50px;
 
 $phase-navigation-width-mob: 210px;
 $phase-navigation-icon-size-mob: 30px;
@@ -28,7 +28,7 @@ $phase-navigation-icon-size-mob: 30px;
 
   &:hover{
     opacity: 0.95;
-    left: calc(100vw - (#{$phase-navigation-width} + #{$standardPadding * 5}));
+    left: calc(100vw - (#{$phase-navigation-width} + #{$standardPadding * 4}));
 
     @include queryThis($xs){
       left: calc(100vw - (#{$phase-navigation-width-mob} + #{$standardPadding * 2}));

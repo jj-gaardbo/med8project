@@ -68,7 +68,7 @@ export default class Pitch extends React.Component {
         return (
             <div className="pitch_selection pitch">
 
-                <Button className={"pull-up btn btn-primary"} handleClick={this.toggleOverlay}>Toggle</Button>
+                {/*<Button className={"pull-up btn btn-primary"} handleClick={this.toggleOverlay}>Toggle</Button>*/}
 
                 <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
                 {this.state.overlays[0] &&

@@ -23,9 +23,10 @@ export default class PlayerRole{
         if(typeof phase_id === "undefined"){return null;}
         let data = this.get(phase_id);
 
-        let listDOM = "<h1>";
+        let listDOM = "";
+        /*= "<h1>";
         listDOM += getPhaseTitle(phase_id);
-        listDOM += "</h1>";
+        listDOM += "</h1>";*/
         listDOM += "<ul class='list-group list-group-root'>";
         if(parseInt(phase_id) === PHASE_OFF_CONVERSION) {
             let phaseKeys = Object.keys(data);

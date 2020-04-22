@@ -5,6 +5,7 @@ import {PHASE_DEF, PHASE_OFF} from "../components/Common.jsx";
 import PhaseNavigation from "../components/PhaseNavigation.jsx";
 import DataHandler from "../components/DataHandler.jsx";
 import ModalElement from "../components/Modal.jsx";
+import HeaderComponent from "../components/HeaderComponent.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -82,11 +83,21 @@ export default class Player extends React.Component {
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
 
-                    {this.state.playerObject && this.state.phaseSelection &&
-                    <ModalElement title={"Din rolle"}>
-                        <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
-                    </ModalElement>
-                    }
+                    <HeaderComponent>
+
+                        {this.state.playerObject && this.state.phaseSelection &&
+                        <ModalElement title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
+                            <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                        </ModalElement>
+                        }
+
+                        {this.state.phaseSelection &&
+                        <ModalElement title={"Holdets rolle"} phaseSelection={this.state.phaseSelection}>
+                            HOLDETS ROLLE
+                        </ModalElement>
+                        }
+
+                    </HeaderComponent>
 
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}/>
                 </div>
