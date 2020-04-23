@@ -13,6 +13,7 @@ import {
 } from "./Common.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLevelUpAlt, faLevelDownAlt, faBatteryQuarter, faBatteryHalf, faBatteryFull, faThermometerFull, faThermometerHalf,faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
 import {
     PHASE_DEF_CONVERSION_STRING,
     PHASE_DEF_FIELD_DEFENCE_STRING,
@@ -114,6 +115,8 @@ export default class PhaseNavigation extends React.Component {
     render() {
         return (
             <nav className={"phase-nav"}>
+                {this.props.children}
+
                 {this.createPhaseNavigation()}
             </nav>
         )

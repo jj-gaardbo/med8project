@@ -82,24 +82,21 @@ export default class Player extends React.Component {
                 <div className="col-lg-12">
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
+                    <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
+                        <HeaderComponent>
+                            {this.state.playerObject && this.state.phaseSelection &&
+                            <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
+                                <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                            </ModalElement>
+                            }
 
-                    <HeaderComponent>
-
-                        {this.state.playerObject && this.state.phaseSelection &&
-                        <ModalElement title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
-                            <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
-                        </ModalElement>
-                        }
-
-                        {this.state.phaseSelection &&
-                        <ModalElement title={"Holdets rolle"} phaseSelection={this.state.phaseSelection}>
-                            HOLDETS ROLLE
-                        </ModalElement>
-                        }
-
-                    </HeaderComponent>
-
-                    <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}/>
+                            {this.state.phaseSelection &&
+                            <ModalElement icon={"users"} title={"Holdets rolle"} phaseSelection={this.state.phaseSelection}>
+                                HOLDETS ROLLE
+                            </ModalElement>
+                            }
+                        </HeaderComponent>
+                    </PhaseNavigation>
                 </div>
             </div>
         )

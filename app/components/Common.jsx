@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export const POS_KEEPER = 1;
 export const POS_CENTERBACK = 2;
 export const POS_FULLBACK = 3;
@@ -51,3 +53,6 @@ export function getPhaseTitle(phase_id){
     }
 }
 
+export function modalOpenCheck(){
+    return $('.modal-open').length > 0;
+}
