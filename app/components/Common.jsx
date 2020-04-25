@@ -10,6 +10,9 @@ export const POS_STRIKER = 6;
 export const PHASE_DEF = 1;
 export const PHASE_OFF = 2;
 
+export const PHASE_DEF_STANDARDS = 8;
+export const PHASE_OFF_STANDARDS = 9;
+
 export const PHASE_DEF_HIGH_PRESSURE = 10;
 export const PHASE_DEF_MEDIUM_LOW_PRESSURE = 11;
 export const PHASE_DEF_FIELD_DEFENCE = 12;
@@ -20,6 +23,9 @@ export const PHASE_OFF_PHASE_2 = 15;
 export const PHASE_OFF_PHASE_3 = 16;
 export const PHASE_OFF_CONVERSION = 17;
 
+
+export const PHASE_DEF_STANDARDS_STRING = "Defensive standarder";
+export const PHASE_OFF_STANDARDS_STRING = "Offensive standarder";
 export const PHASE_DEF_HIGH_PRESSURE_STRING = "Højt pres";
 export const PHASE_DEF_MEDIUM_LOW_PRESSURE_STRING = "Mellem/lavt pres";
 export const PHASE_DEF_FIELD_DEFENCE_STRING = "Forsvaring af felt";
@@ -32,6 +38,8 @@ export const PHASE_OFF_CONVERSION_STRING = "Omstilling offensivt";
 
 export function getPhaseTitle(phase_id){
     switch (phase_id) {
+        case PHASE_DEF_STANDARDS:
+            return PHASE_DEF_STANDARDS_STRING;
         case PHASE_DEF_HIGH_PRESSURE:
             return PHASE_DEF_HIGH_PRESSURE_STRING;
         case PHASE_DEF_MEDIUM_LOW_PRESSURE:
@@ -48,6 +56,8 @@ export function getPhaseTitle(phase_id){
             return PHASE_OFF_PHASE_3_STRING;
         case PHASE_OFF_CONVERSION:
             return PHASE_OFF_CONVERSION_STRING;
+        case PHASE_OFF_STANDARDS:
+            return PHASE_OFF_STANDARDS_STRING;
         default:
             return "";
     }

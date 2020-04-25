@@ -1,5 +1,5 @@
 import React from 'react';
-import {PHASE_OFF, PHASE_DEF, PHASE_DEF_HIGH_PRESSURE, PHASE_DEF_MEDIUM_LOW_PRESSURE, PHASE_DEF_FIELD_DEFENCE, PHASE_DEF_CONVERSION, PHASE_OFF_PHASE_1, PHASE_OFF_PHASE_2, PHASE_OFF_PHASE_3, PHASE_OFF_CONVERSION} from "./Common.jsx";
+import {PHASE_DEF_STANDARDS, PHASE_OFF_STANDARDS, PHASE_OFF, PHASE_DEF, PHASE_DEF_HIGH_PRESSURE, PHASE_DEF_MEDIUM_LOW_PRESSURE, PHASE_DEF_FIELD_DEFENCE, PHASE_DEF_CONVERSION, PHASE_OFF_PHASE_1, PHASE_OFF_PHASE_2, PHASE_OFF_PHASE_3, PHASE_OFF_CONVERSION} from "./Common.jsx";
 import {getPhaseTitle} from "./Common.jsx";
 
 export default class PlayerRole{
@@ -21,6 +21,9 @@ export default class PlayerRole{
 
     toHtml(phase_id){
         if(typeof phase_id === "undefined"){return null;}
+
+        if(parseInt(phase_id) === PHASE_DEF_STANDARDS || parseInt(phase_id) === PHASE_OFF_STANDARDS){ return null; }
+
         let data = this.get(phase_id);
 
         let listDOM = "";
@@ -58,6 +61,8 @@ export default class PlayerRole{
 
     get(phase){
         if(!this.data){ return; }
+
+        if(parseInt(phase) === PHASE_DEF_STANDARDS || parseInt(phase) === PHASE_OFF_STANDARDS){ return; }
 
         if(parseInt(phase) === PHASE_DEF_HIGH_PRESSURE ||
             parseInt(phase) === PHASE_DEF_MEDIUM_LOW_PRESSURE ||

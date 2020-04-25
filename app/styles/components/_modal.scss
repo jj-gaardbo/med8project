@@ -4,4 +4,19 @@
   top: 50%!important;
 
   transform: translateY(-50%)!important;
+
+  .modal-title{
+    font-family: "HelveticaNeue-Bold", sans-serif;
+    font-size: 1.2em;
+  }
+
+  .nav-item:hover{
+    color: $mainRed;
+    cursor: pointer;
+  }
+
+  .active.nav-link{
+    background-color: $mainBlue;
+    color: $white;
+  }
 }

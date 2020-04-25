@@ -2,10 +2,22 @@ import React from 'react';
 import Pitch from "../components/Pitch.jsx";
 import {POS_KEEPER, POS_CENTERBACK, POS_FULLBACK, POS_CENTERMIDFIELDER, POS_MIDFIELDER, POS_STRIKER} from "../components/Common.jsx";
 import {PHASE_DEF, PHASE_OFF} from "../components/Common.jsx";
+import {PHASE_DEF_HIGH_PRESSURE,PHASE_DEF_MEDIUM_LOW_PRESSURE,PHASE_DEF_FIELD_DEFENCE,PHASE_DEF_CONVERSION,PHASE_OFF_PHASE_1,PHASE_OFF_PHASE_2,PHASE_OFF_PHASE_3,PHASE_OFF_CONVERSION} from "../components/Common.jsx";
+import {PHASE_DEF_STANDARDS, PHASE_OFF_STANDARDS} from "../components/Common.jsx";
 import PhaseNavigation from "../components/PhaseNavigation.jsx";
 import DataHandler from "../components/DataHandler.jsx";
 import ModalElement from "../components/Modal.jsx";
 import HeaderComponent from "../components/HeaderComponent.jsx";
+import PhaseDefHighPressure from "../data/Phases/10.jsx";
+import PhaseDefMediumLowPressure from "../data/Phases/11.jsx";
+import PhaseDefFieldDefence from "../data/Phases/12.jsx";
+import PhaseDefConversion from "../data/Phases/13.jsx";
+import PhaseDefStandards from "../data/Phases/8.jsx";
+import PhaseOffStandards from "../data/Phases/9.jsx";
+import PhaseOffPhase1 from "../data/Phases/14.jsx";
+import PhaseOffPhase2 from "../data/Phases/15.jsx";
+import PhaseOffPhase3 from "../data/Phases/16.jsx";
+import PhaseOffConversion from "../data/Phases/17.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -76,6 +88,31 @@ export default class Player extends React.Component {
         }
     }
 
+    handlePhaseDom(phase_id){
+        switch (phase_id) {
+            case PHASE_DEF_HIGH_PRESSURE:
+                return <PhaseDefHighPressure/>
+            case PHASE_DEF_MEDIUM_LOW_PRESSURE:
+                return <PhaseDefMediumLowPressure/>
+            case PHASE_DEF_FIELD_DEFENCE:
+                return <PhaseDefFieldDefence/>
+            case PHASE_DEF_CONVERSION:
+                return <PhaseDefConversion/>
+            case PHASE_OFF_PHASE_1:
+                return <PhaseOffPhase1/>
+            case PHASE_OFF_PHASE_2:
+                return <PhaseOffPhase2/>
+            case PHASE_OFF_PHASE_3:
+                return <PhaseOffPhase3/>
+            case PHASE_OFF_CONVERSION:
+                return <PhaseOffConversion/>
+            case PHASE_DEF_STANDARDS:
+                return <PhaseDefStandards/>
+            case PHASE_OFF_STANDARDS:
+                return <PhaseOffStandards/>
+        }
+    }
+
     render() {
         return (
             <div className="player row">
@@ -85,15 +122,13 @@ export default class Player extends React.Component {
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
                         <HeaderComponent>
                             {this.state.playerObject && this.state.phaseSelection &&
-                            <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
-                                <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
-                            </ModalElement>
+                                <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
+                                    <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                                </ModalElement>
                             }
 
                             {this.state.phaseSelection &&
-                            <ModalElement icon={"users"} title={"Holdets rolle"} phaseSelection={this.state.phaseSelection}>
-                                HOLDETS ROLLE
-                            </ModalElement>
+                                this.handlePhaseDom(this.state.phaseSelection)
                             }
                         </HeaderComponent>
                     </PhaseNavigation>

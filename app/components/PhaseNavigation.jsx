@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+    PHASE_OFF_STANDARDS,
+    PHASE_DEF_STANDARDS,
     PHASE_DEF,
     PHASE_DEF_HIGH_PRESSURE,
     PHASE_OFF,
@@ -22,10 +24,19 @@ import {
     PHASE_OFF_CONVERSION_STRING,
     PHASE_OFF_PHASE_1_STRING,
     PHASE_OFF_PHASE_2_STRING,
-    PHASE_OFF_PHASE_3_STRING
+    PHASE_OFF_PHASE_3_STRING,
+    PHASE_OFF_STANDARDS_STRING,
+    PHASE_DEF_STANDARDS_STRING,
 } from "./Common.jsx";
 
+
 const phases = [
+    {
+        "name" : PHASE_OFF_STANDARDS_STRING,
+        "icon" : faShieldAlt,
+        "phase_category" : PHASE_OFF,
+        "phase_id" : PHASE_OFF_STANDARDS
+    },
     {
         "name" : PHASE_OFF_PHASE_3_STRING,
         "icon" : faBatteryFull,
@@ -46,13 +57,13 @@ const phases = [
     },
     {
         "name" : PHASE_OFF_CONVERSION_STRING,
-        "icon" : faLevelUpAlt,
+        "icon" : faLevelDownAlt,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_CONVERSION
     },
     {
         "name" : PHASE_DEF_CONVERSION_STRING,
-        "icon" : faLevelDownAlt,
+        "icon" : faLevelUpAlt,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_CONVERSION
     },
@@ -73,6 +84,12 @@ const phases = [
         "icon" : faShieldAlt,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_FIELD_DEFENCE
+    },
+    {
+        "name" : PHASE_DEF_STANDARDS_STRING,
+        "icon" : faShieldAlt,
+        "phase_category" : PHASE_DEF,
+        "phase_id" : PHASE_DEF_STANDARDS
     }
 ];
 

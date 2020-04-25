@@ -8,6 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "classnames": "^2.2.6",
     "dotenv": "^4.0.0",
     "jquery": "^3.4.1",
     "modernizr-webpack-plugin": "^1.0.6",

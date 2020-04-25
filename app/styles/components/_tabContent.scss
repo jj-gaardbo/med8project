@@ -1,0 +1,13 @@
+.tab-content{
+  @include boxSize();
+  padding: $standardPadding 0;
+
+  p,li,strong{
+    line-height: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  img{
+    max-width: 100%;
+  }
+}

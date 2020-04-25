@@ -51,6 +51,7 @@ export default class ModalElement extends React.Component{
                     <ModalHeader toggle={this.toggle}>{title} - {phaseString && phaseString}</ModalHeader>
                     }
                     <ModalBody>
+                        {this.props.modalTabs}
                         {this.props.children}
                     </ModalBody>
                 </Modal>
