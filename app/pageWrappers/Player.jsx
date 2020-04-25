@@ -18,6 +18,7 @@ import PhaseOffPhase1 from "../data/Phases/14.jsx";
 import PhaseOffPhase2 from "../data/Phases/15.jsx";
 import PhaseOffPhase3 from "../data/Phases/16.jsx";
 import PhaseOffConversion from "../data/Phases/17.jsx";
+import {getPhaseTitle} from "../components/Common.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -118,6 +119,11 @@ export default class Player extends React.Component {
             <div className="player row">
                 <div className="col-lg-12">
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
+
+                    {this.state.phaseSelection &&
+                    <h1 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h1>
+                    }
+
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
                         <HeaderComponent>

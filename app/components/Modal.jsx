@@ -41,7 +41,7 @@ export default class ModalElement extends React.Component{
 
         return(
             <div className={"modal-button"}>
-                <ButtonModal title={title} handleClick={this.toggle} className={`modal-button ${this.state.isOpen ? "modal-is-open" : ""}`}>
+                <ButtonModal title={title} handleClick={this.toggle} className={`modal-btn ${this.state.isOpen ? "modal-is-open" : ""}`}>
                     {this.props.icon &&
                         this.getIcon(this.props.icon)
                     }

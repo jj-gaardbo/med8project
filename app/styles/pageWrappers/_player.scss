@@ -10,4 +10,13 @@
   h1{
     color: $white;
   }
+
+  .chosen-phase-title{
+    width: 100%;
+    text-align: center;
+    @include boxSize();
+    left:0;
+    top: 0;
+    position: absolute;
+  }
 }

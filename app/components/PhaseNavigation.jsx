@@ -133,7 +133,6 @@ export default class PhaseNavigation extends React.Component {
         return (
             <nav className={"phase-nav"}>
                 {this.props.children}
-
                 {this.createPhaseNavigation()}
             </nav>
         )
