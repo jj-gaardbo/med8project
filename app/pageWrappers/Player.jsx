@@ -124,19 +124,21 @@ export default class Player extends React.Component {
                     <h1 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h1>
                     }
 
+                    <HeaderComponent>
+                        {this.state.playerObject && this.state.phaseSelection &&
+                        <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
+                            <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                        </ModalElement>
+                        }
+
+                        {this.state.phaseSelection &&
+                        this.handlePhaseDom(this.state.phaseSelection)
+                        }
+                    </HeaderComponent>
+
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
-                        <HeaderComponent>
-                            {this.state.playerObject && this.state.phaseSelection &&
-                                <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
-                                    <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
-                                </ModalElement>
-                            }
 
-                            {this.state.phaseSelection &&
-                                this.handlePhaseDom(this.state.phaseSelection)
-                            }
-                        </HeaderComponent>
                     </PhaseNavigation>
                 </div>
             </div>
