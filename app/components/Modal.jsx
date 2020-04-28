@@ -34,7 +34,8 @@ export default class ModalElement extends React.Component{
     render(){
         const {
             title,
-            phaseSelection
+            phaseSelection,
+            className
         } = this.props;
 
         const phaseString = getPhaseTitle(phaseSelection)
@@ -46,9 +47,9 @@ export default class ModalElement extends React.Component{
                         this.getIcon(this.props.icon)
                     }
                 </ButtonModal>
-                <Modal isOpen={this.state.isOpen} toggle={this.toggle} className={"modal-component modal-lg"}>
+                <Modal isOpen={this.state.isOpen} toggle={this.toggle} className={"modal-component modal-xl " + className}>
                     {title !== "" &&
-                    <ModalHeader toggle={this.toggle}>{title} - {phaseString && phaseString}</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>{phaseString && phaseString} - {title}</ModalHeader>
                     }
                     <ModalBody>
                         {this.props.modalTabs}

@@ -92,25 +92,25 @@ export default class Player extends React.Component {
     handlePhaseDom(phase_id){
         switch (phase_id) {
             case PHASE_DEF_HIGH_PRESSURE:
-                return <PhaseDefHighPressure/>
+                return <PhaseDefHighPressure theme={"theme-1"}/>
             case PHASE_DEF_MEDIUM_LOW_PRESSURE:
-                return <PhaseDefMediumLowPressure/>
+                return <PhaseDefMediumLowPressure theme={"theme-1"}/>
             case PHASE_DEF_FIELD_DEFENCE:
-                return <PhaseDefFieldDefence/>
+                return <PhaseDefFieldDefence theme={"theme-1"}/>
             case PHASE_DEF_CONVERSION:
-                return <PhaseDefConversion/>
+                return <PhaseDefConversion theme={"theme-1"}/>
             case PHASE_OFF_PHASE_1:
-                return <PhaseOffPhase1/>
+                return <PhaseOffPhase1 theme={"theme-2"}/>
             case PHASE_OFF_PHASE_2:
-                return <PhaseOffPhase2/>
+                return <PhaseOffPhase2 theme={"theme-2"}/>
             case PHASE_OFF_PHASE_3:
-                return <PhaseOffPhase3/>
+                return <PhaseOffPhase3 theme={"theme-2"}/>
             case PHASE_OFF_CONVERSION:
-                return <PhaseOffConversion/>
+                return <PhaseOffConversion theme={"theme-2"}/>
             case PHASE_DEF_STANDARDS:
-                return <PhaseDefStandards/>
+                return <PhaseDefStandards theme={"theme-1"}/>
             case PHASE_OFF_STANDARDS:
-                return <PhaseOffStandards/>
+                return <PhaseOffStandards theme={"theme-2"}/>
         }
     }
 
@@ -121,12 +121,12 @@ export default class Player extends React.Component {
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
 
                     {this.state.phaseSelection &&
-                    <h1 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h1>
+                    <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>
                     }
 
                     <HeaderComponent>
                         {this.state.playerObject && this.state.phaseSelection &&
-                        <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection}>
+                        <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
                             <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
                         </ModalElement>
                         }
@@ -138,7 +138,7 @@ export default class Player extends React.Component {
 
                     <Pitch handlePlayerSelection={this.handlePlayerSelection} />
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
-
+                        <h4>Vælg spil fase</h4>
                     </PhaseNavigation>
                 </div>
             </div>

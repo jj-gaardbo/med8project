@@ -41,3 +41,89 @@ $xxl: 'min-width: 1366px';
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+@mixin transition{
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+}
+
+@mixin arrowIndicator_Left($color){
+  position: absolute;
+  top: 50%;
+  margin-top: -9px;
+  right: 0;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 15.6px 9px 0;
+  border-color: transparent $color transparent transparent;
+}
+
+@mixin arrowIndicator_Right($color){
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 15.6px;
+  border-color: transparent transparent transparent $color;
+}
+
+
+@mixin modalThemeOffence(){
+  background-color: $mainBlue;
+  color: $white;
+
+  .modal-content{
+    background-color: $mainBlue;
+
+    .nav-tabs{
+      border-color: $white;
+    }
+
+    .nav-item a{
+      border-color: $white;
+      background-color: $mainBlue;
+      color: $white;
+
+      &.active{
+        background-color: $white;
+        color: $mainBlue;
+      }
+    }
+
+    .list-group, .list-group-item{
+      background-color: $mainBlue;
+    }
+  }
+}
+
+@mixin modalThemeDefence(){
+  color: $mainRed;
+
+  .modal-content{
+    background-color: $white;
+
+    .nav-tabs{
+      border-bottom-color: $mainRed;
+    }
+
+    .nav-item a{
+      border-color: $mainRed;
+      background-color: $white;
+      color: $mainRed;
+
+      &.active{
+        background-color: $mainRed;
+        color: $white;
+      }
+    }
+  }
+}

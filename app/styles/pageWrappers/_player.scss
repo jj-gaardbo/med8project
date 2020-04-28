@@ -7,7 +7,7 @@
   /**
   * This is an example of how to use the variables defined in the file called '_constants.scss'
    */
-  h1{
+  h3{
     color: $white;
   }
 
@@ -16,7 +16,7 @@
     text-align: center;
     @include boxSize();
     left:0;
-    top: calc(#{$headerComponentHeight} + #{$standardPadding});
+    top: calc(#{$headerComponentHeight} + 10px);
     position: absolute;
   }
 }
