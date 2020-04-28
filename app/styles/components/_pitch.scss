@@ -56,6 +56,24 @@
     @include queryThis($sm){
       height: 440px;
     }
+
+    @keyframes Pulsate {
+      from { opacity: 0.6; }
+      50% { opacity: 0.3; }
+      to { opacity: 0.6; }
+    }
+
+    .highlight-zone{
+      animation: Pulsate 1s linear infinite;
+
+      &.highlight-off{
+        fill: $mainBlue;
+      }
+
+      &.highlight-def{
+        fill: $mainRed;
+      }
+    }
   }
 
   #progress {
@@ -88,4 +106,5 @@
     margin: 10px;
     bottom: 5px;
   }
+
 }

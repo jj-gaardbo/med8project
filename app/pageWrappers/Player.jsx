@@ -136,7 +136,7 @@ export default class Player extends React.Component {
                         }
                     </HeaderComponent>
 
-                    <Pitch phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
+                    <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
                         <h4>Vælg spil fase</h4>
                     </PhaseNavigation>

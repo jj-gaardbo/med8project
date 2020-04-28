@@ -8,7 +8,8 @@ import Button from "./Button.jsx";
 import $ from 'jquery';
 import {PHASE_DEF, PHASE_OFF} from "./Common.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faQuestionCircle, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faQuestionCircle, faLocationArrow} from '@fortawesome/free-solid-svg-icons'
+import TooltipElement from "./Tooltip.jsx";
 
 export default class Pitch extends React.Component {
     constructor(props) {
@@ -95,18 +96,26 @@ export default class Pitch extends React.Component {
 
                 <Channels className={`overlay channels ${this.state.overlays[1] ? "shown" : "hidden"}`}/>
 
-                <ZonesDef className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
+                <ZonesDef phaseSelection={this.props.phaseSelection} className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
 
-                <ZonesOff className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
+                <ZonesOff phaseSelection={this.props.phaseSelection} className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
 
                 {/*<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(1)}>Channels</Button>*/}
 
                 {this.props.phaseCategory === 1 &&
-                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faQuestionCircle} /></Button>
+                    <TooltipElement
+                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
+                        tip={<p>Hvor på banen?</p>}
+                        target={"def-zones-tip"}
+                    />
                 }
 
                 {this.props.phaseCategory === 2 &&
-                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faQuestionCircle} /></Button>
+                    <TooltipElement
+                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
+                        tip={<p>Hvor på banen?</p>}
+                        target={"off-zones-tip"}
+                    />
                 }
 
             </div>
