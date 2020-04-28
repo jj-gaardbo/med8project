@@ -100,3 +100,17 @@ strong{
 p{
 	font-family: "HelveticaNeue-Medium", Arial, sans-serif;
 }
+
+.hidden{
+	opacity: 0;
+	visibility: hidden;
+}
+
+.shown{
+	opacity: 1;
+	visibility: visible;
+}
+
+.btn-primary{
+	background-color: $mainBlue;
+}

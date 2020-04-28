@@ -42,6 +42,12 @@ $xxl: 'min-width: 1366px';
   -webkit-box-sizing: border-box;
 }
 
+@mixin transitionTimed($sec){
+  transition: all $sec ease;
+  -webkit-transition: all $sec ease;
+  -moz-transition: all $sec ease;
+}
+
 @mixin transition{
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;

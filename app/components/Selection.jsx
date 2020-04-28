@@ -80,7 +80,7 @@ export default class Selection extends React.Component {
 
     render() {
         return (
-
+            <div {...this.props}>
             <svg version="1.1" id="Layer_3" x="0px" y="0px"
                  width="916px" height="1360px" viewBox="0 0 916 1360" enableBackground="new 0 0 916 1360">
                 <Link onClick={() => this.props.onSelect(POS_KEEPER)} className={`keeper playerPos${this.state.isKeeperHovered ? " hovered" : ""}${this.props.highlight === POS_KEEPER ? " highlight" : ""}`} to={'#'} onMouseEnter={() => this.handleKeeperhover()} onMouseLeave={() => this.handleKeeperMouseLeave()}>
@@ -346,6 +346,7 @@ export default class Selection extends React.Component {
                     </g>
                 </Link>
             </svg>
+            </div>
         )
     }
 }

@@ -5,7 +5,10 @@ import Channels from "./Channels.jsx";
 import ZonesDef from "./ZonesDef.jsx";
 import ZonesOff from "./ZonesOff.jsx";
 import Button from "./Button.jsx";
+import $ from 'jquery';
 import {PHASE_DEF, PHASE_OFF} from "./Common.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faQuestionCircle, faUser} from '@fortawesome/free-solid-svg-icons'
 
 export default class Pitch extends React.Component {
     constructor(props) {
@@ -19,7 +22,10 @@ export default class Pitch extends React.Component {
                 false
             ],
             chosenPhase: null,
-            chosenPosition: null
+            chosenPosition: null,
+            timer: null,
+            timeout: 3000,
+            progressTimer: null
         }
 
         this.disableOverlay = this.disableOverlay.bind(this);
@@ -47,20 +53,33 @@ export default class Pitch extends React.Component {
         this.setState({overlays:[false,false,false,false]});
     }
 
-    toggleOverlay(){
-        this.disableOverlay();
-
-        if(this.state.index+1 < this.state.overlays.length){
-            this.setState({index: this.state.index+1});
+    progress(timeleft, timetotal, $element) {
+        let self = this;
+        let progressBarWidth = timeleft * $element.width() / timetotal;
+        $element.find('div').animate({ width: progressBarWidth }, timeleft === timetotal ? 0 : 1000, 'linear');
+        if(timeleft > 0) {
+            this.state.progressTimer = setTimeout(function() {
+                self.progress(timeleft - 1000, timetotal, $element);
+            }, 500);
+        } else {
+            clearTimeout(self.state.progressTimer);
         }
-        else {
-            this.setState({index: 0});
-        }
+    };
 
-        let temp = [false,false,false,false];
-        for(let i = 0; i < this.state.overlays.length; i++){
-            temp[this.state.index] = true;
-            this.setState({overlays:temp})
+    toggleOverlay(showOverlay = 0){
+        if(this.state.progressTimer !== null){ console.log("!"); return;}
+        let self = this;
+        let overlays = [false,false,false,false];
+        overlays[showOverlay] = true;
+        this.setState({overlays: overlays});
+
+        if(showOverlay !== 0){
+            this.progress(this.state.timeout, this.state.timeout, $('#progress'));
+            this.state.timer = setTimeout(function(){
+                self.setState({progressTimer:null});
+                self.toggleOverlay(0);
+                clearTimeout(self.state.timer);
+            }, this.state.timeout);
         }
     }
 
@@ -68,24 +87,28 @@ export default class Pitch extends React.Component {
         return (
             <div className="pitch_selection pitch">
 
-                {/*<Button className={"pull-up btn btn-primary"} handleClick={this.toggleOverlay}>Toggle</Button>*/}
+                <div id="progress" className={`${this.state.progressTimer !== null ? "shown" : "hidden"}`}><div/></div>
 
                 <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
-                {this.state.overlays[0] &&
-                    <Selection onSelect={this.handlePlayerSelection} highlight={this.state.chosenPosition} />
+
+                <Selection className={`overlay selection ${this.state.overlays[0] ? "shown" : "hidden"}`} onSelect={this.handlePlayerSelection} highlight={this.state.chosenPosition} />
+
+                <Channels className={`overlay channels ${this.state.overlays[1] ? "shown" : "hidden"}`}/>
+
+                <ZonesDef className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
+
+                <ZonesOff className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
+
+                {/*<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(1)}>Channels</Button>*/}
+
+                {this.props.phaseCategory === 1 &&
+                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faQuestionCircle} /></Button>
                 }
 
-                {this.state.overlays[1] &&
-                    <Channels/>
+                {this.props.phaseCategory === 2 &&
+                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faQuestionCircle} /></Button>
                 }
 
-                {this.state.overlays[2] &&
-                    <ZonesDef/>
-                }
-
-                {this.state.overlays[3] &&
-                    <ZonesOff/>
-                }
             </div>
         )
     }

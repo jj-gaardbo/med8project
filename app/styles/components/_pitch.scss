@@ -46,7 +46,7 @@
     top: 0;
   }
 
-  svg{
+  .overlay svg{
     height: 740px;
     max-width: 100%;
     position: absolute;
@@ -56,5 +56,36 @@
     @include queryThis($sm){
       height: 440px;
     }
+  }
+
+  #progress {
+    width: 100%;
+    margin: 0 auto;
+    height: 5px;
+    background-color: $white;
+    z-index: 3;
+    bottom:0;
+    position: absolute;
+    @include transitionTimed(1s);
+  }
+
+  #progress div {
+    height: 100%;
+    text-align: right;
+    padding: 0;
+    width: 0;
+    background-color: $mainRed;
+    box-sizing: border-box;
+  }
+
+  .channels, .zones-def, .zones-off, .selection{
+    @include transitionTimed(1s);
+  }
+
+  .btn-overlay{
+    position: absolute;
+    z-index: 10;
+    margin: 10px;
+    bottom: 5px;
   }
 }

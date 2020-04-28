@@ -125,7 +125,7 @@ export default class PhaseNavigation extends React.Component {
         let nav = [];
         let children = [];
         let phaseClass = "";
-        children.push(<li className={"category cat-off"}><strong>Offensive faser</strong></li>)
+        children.push(<li key={-1} className={"category cat-off"}><strong>Offensive faser</strong></li>)
         for (let i = 0; i < phases.length; i++) {
             if(i === (parseInt(phases.length/2) - 1)){
                 phaseClass = phases[i].phase_class + " offensive-end";
@@ -144,7 +144,7 @@ export default class PhaseNavigation extends React.Component {
                 </button>
             </li>)
         }
-        children.push(<li className={"category cat-def"}><strong>Defensive faser</strong></li>)
+        children.push(<li key={phases.length} className={"category cat-def"}><strong>Defensive faser</strong></li>)
         nav.push(<ul key={0} className={"phase-nav-list"}>{children}</ul>)
         return nav
     }
