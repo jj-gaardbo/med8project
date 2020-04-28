@@ -7,12 +7,15 @@ $phase-navigation-icon-size-mob: 30px;
 .phase-nav{
   h4{
     color: $white;
-    text-align: center;
+    text-align: left;
     position: absolute;
     z-index: 9999;
     width: 100%;
-    @include boxSize();
+    padding: 20px 0 0 5px;
 
+    @include queryThis($xs){
+      padding: 5px 0 0 10px;
+    }
   }
 
   &:before{
@@ -26,7 +29,7 @@ $phase-navigation-icon-size-mob: 30px;
     width: 100%;
   }
 
-  width: calc(#{$phase-navigation-width} + #{$standardPadding * 4.5});
+  width: calc(#{$phase-navigation-width} + #{$standardPadding});
   display: table-row;
   position: fixed;
   z-index: 1049;
@@ -35,22 +38,22 @@ $phase-navigation-icon-size-mob: 30px;
   color: $white;
   height: 100vh;
   top: 0;
-  left: calc(100vw - (#{$phase-navigation-icon-size} + #{$standardPadding / 2}));
+  left: calc(-#{$phase-navigation-width} + (#{$phase-navigation-icon-size} + (#{$standardPadding} / 4)));
   transition: all 0.3s ease;
   @include boxSize();
-  padding: 20px 0px;
+  padding: 20px 0;
 
   @include queryThis($xs){
     padding: 20px 0;
-    width: calc(#{$phase-navigation-width-mob} + #{$standardPadding * 3});
-    left: calc(100vw - (#{$phase-navigation-icon-size-mob} + #{$standardPadding / 2.5}));
+    width: calc(#{$phase-navigation-width-mob} + #{$standardPadding * 2});
+    left: calc(-#{$phase-navigation-width-mob} + (#{$phase-navigation-icon-size-mob} / 5));
   }
 
   &:hover{
-    left: calc(100vw - (#{$phase-navigation-width} + 90px));
+    left: 0;
 
     @include queryThis($xs){
-      left: calc(100vw - (#{$phase-navigation-width-mob} + #{$standardPadding * 2}));
+      left: 0;
     }
   }
 
@@ -68,7 +71,7 @@ $phase-navigation-icon-size-mob: 30px;
       margin: 0 0 0 0;
 
       @include queryThis($xs){
-        margin: 0 0 0 0;
+        margin: 0 0 0 10px;
       }
     }
   }
@@ -86,7 +89,7 @@ $phase-navigation-icon-size-mob: 30px;
     @include transition();
 
     @include queryThis($xs){
-      padding: 5px 0;
+      padding: 0 0;
     }
 
     &:active {
@@ -103,7 +106,7 @@ $phase-navigation-icon-size-mob: 30px;
       &:hover{
         color: $black;
         &:before{
-          @include arrowIndicator_Right($black)
+          /*@include arrowIndicator_Right($black)*/
         }
 
         &:after{
@@ -113,7 +116,7 @@ $phase-navigation-icon-size-mob: 30px;
 
       &.chosen{
         &:before{
-          @include arrowIndicator_Right($white)
+          /*@include arrowIndicator_Right($white)*/
         }
 
         &:after{
@@ -133,7 +136,7 @@ $phase-navigation-icon-size-mob: 30px;
       &:hover{
         color: $black;
         &:before{
-          @include arrowIndicator_Right($black)
+          /*@include arrowIndicator_Right($black)*/
         }
 
         &:after{
@@ -143,7 +146,7 @@ $phase-navigation-icon-size-mob: 30px;
 
       &.chosen{
         &:before{
-          @include arrowIndicator_Right($mainRed)
+          /*@include arrowIndicator_Right($mainRed)*/
         }
 
         &:after{
@@ -161,27 +164,39 @@ $phase-navigation-icon-size-mob: 30px;
     }
 
     svg{
-      margin: 5px 20px 5px 15px;
+      margin: 5px 15px 5px 20px;
       padding: 5px;
-      float: left;
+      float: right;
       width: 30px!important;
       height: 30px!important;
+
+      @include queryThis($xs){
+        margin: 5px 15px 5px 5px;
+      }
     }
   }
 
   li.category{
     &.cat-off{
       color: $white;
-      text-align: center;
-      margin-bottom: 30px;
+      text-align: left;
+      margin: 0 0 30px 5px;
       font-size: 1em;
+
+      @include queryThis($xs){
+        margin: 0 0 20px 10px;
+      }
     }
 
     &.cat-def{
       color: $mainRed;
-      text-align: center;
-      margin-top: 30px;
+      text-align: left;
+      margin: 30px 0 0 5px;
       font-size: 1em;
+
+      @include queryThis($xs){
+        margin: 20px 0 0 10px;
+      }
     }
   }
 }

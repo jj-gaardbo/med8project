@@ -139,8 +139,8 @@ export default class PhaseNavigation extends React.Component {
                 <button
                     className={`phase-nav-link ${this.state.selectedPhase === phases[i].phase_id ? " chosen" : ""} ${phaseClass}`}
                     onClick={() => this.handlePhaseSelection(phases[i].phase_id, phases[i].phase_category)}>
-                    <FontAwesomeIcon icon={phases[i].icon} />
                     {phases[i].name}
+                    <FontAwesomeIcon icon={phases[i].icon} />
                 </button>
             </li>)
         }

@@ -8,7 +8,7 @@ import Button from "./Button.jsx";
 import $ from 'jquery';
 import {PHASE_DEF, PHASE_OFF} from "./Common.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faQuestionCircle, faLocationArrow} from '@fortawesome/free-solid-svg-icons'
+import {faLocationArrow, faVectorSquare} from '@fortawesome/free-solid-svg-icons'
 import TooltipElement from "./Tooltip.jsx";
 
 export default class Pitch extends React.Component {
@@ -25,7 +25,7 @@ export default class Pitch extends React.Component {
             chosenPhase: null,
             chosenPosition: null,
             timer: null,
-            timeout: 3000,
+            timeout: 4000,
             progressTimer: null
         }
 
@@ -100,13 +100,19 @@ export default class Pitch extends React.Component {
 
                 <ZonesOff phaseSelection={this.props.phaseSelection} className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
 
-                {/*<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(1)}>Channels</Button>*/}
+                <TooltipElement
+                    element={<Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /></Button>}
+                    tip={<p>Kanaler</p>}
+                    target={"channels"}
+                    placement={"left"}
+                />
 
                 {this.props.phaseCategory === 1 &&
                     <TooltipElement
                         element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
                         tip={<p>Hvor på banen?</p>}
                         target={"def-zones-tip"}
+                        placement={"right"}
                     />
                 }
 
@@ -115,6 +121,7 @@ export default class Pitch extends React.Component {
                         element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
                         tip={<p>Hvor på banen?</p>}
                         target={"off-zones-tip"}
+                        placement={"right"}
                     />
                 }
 

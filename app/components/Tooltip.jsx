@@ -9,7 +9,7 @@ const TooltipElement = (props) => {
     return (
         <div>
             <div href="#" id={props.target}>{props.element}</div>
-            <Tooltip placement="right" isOpen={tooltipOpen} target={props.target} toggle={toggle}>
+            <Tooltip placement={props.placement} isOpen={tooltipOpen} target={props.target} toggle={toggle}>
                 {props.tip}
             </Tooltip>
         </div>

@@ -10,9 +10,9 @@
 
   @include queryThis($sm){
     width: 300px;
-    margin-left: -150px;
+    margin-left: -125px;
     height: 510px;
-    margin-top: -255px;
+    margin-top: -222px;
   }
 
   @include queryThis($xs){
@@ -103,8 +103,13 @@
   .btn-overlay{
     position: absolute;
     z-index: 10;
-    margin: 10px;
-    bottom: 5px;
+    margin: 5px;
+    bottom: 0;
+    border-radius: 50%;
+
+    &.btn-channels{
+      right: 0;
+    }
   }
 
 }
