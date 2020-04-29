@@ -55,10 +55,19 @@ $burgerButtonSize: 40px;
       margin-left: 5px;
       margin-right: 5px;
     }
+
+    @include queryThis($xs){
+      margin-top: 0px;
+      margin-right: 5px;
+    }
   }
 
   &.closed-nav{
     left: calc(-#{$phase-navigation-width} + (#{$phase-navigation-icon-size} + (#{$standardPadding} / 4)));
+
+    @include queryThis($xs){
+      left: calc(-#{$phase-navigation-width-mob} + 12px);
+    }
   }
 
   transition: all 0.3s ease;
@@ -195,7 +204,7 @@ $burgerButtonSize: 40px;
       height: 30px!important;
 
       @include queryThis($xs){
-        margin: 5px 15px 5px 5px;
+        margin: 5px 10px 5px 5px;
       }
     }
   }
