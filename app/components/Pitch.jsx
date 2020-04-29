@@ -96,9 +96,9 @@ export default class Pitch extends React.Component {
 
                 <Channels className={`overlay channels ${this.state.overlays[1] ? "shown" : "hidden"}`}/>
 
-                <ZonesDef phaseSelection={this.props.phaseSelection} className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
+                <ZonesDef phaseselection={this.props.phaseSelection} className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
 
-                <ZonesOff phaseSelection={this.props.phaseSelection} className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
+                <ZonesOff phaseselection={this.props.phaseSelection} className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
 
                 <TooltipElement
                     element={<Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /></Button>}

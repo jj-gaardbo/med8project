@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class ZonesOff extends React.Component {
     render() {
-        const phase = this.props.phaseSelection;
+        const phase = this.props.phaseselection;
         return (
             <div {...this.props}>
                 <svg version="1.1" id="Layer_6" x="0px" y="0px"

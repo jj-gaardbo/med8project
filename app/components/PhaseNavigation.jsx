@@ -14,8 +14,21 @@ import {
     PHASE_OFF_PHASE_3
 } from "./Common.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLevelUpAlt, faLevelDownAlt, faBatteryQuarter, faBatteryHalf, faBatteryFull, faThermometerFull, faThermometerHalf,faShieldAlt } from '@fortawesome/free-solid-svg-icons'
-import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
+import {
+    faArrowUp,
+    faArrowDown,
+    faLevelUpAlt,
+    faLevelDownAlt,
+    faBatteryQuarter,
+    faBatteryHalf,
+    faBatteryFull,
+    faThermometerFull,
+    faThermometerHalf,
+    faShieldAlt,
+    faLocationArrow,
+    faTimes,
+    faBars
+} from '@fortawesome/free-solid-svg-icons'
 import {
     PHASE_DEF_CONVERSION_STRING,
     PHASE_DEF_FIELD_DEFENCE_STRING,
@@ -28,12 +41,13 @@ import {
     PHASE_OFF_STANDARDS_STRING,
     PHASE_DEF_STANDARDS_STRING,
 } from "./Common.jsx";
+import Button from "./Button.jsx";
 
 
 const phases = [
     {
         "name" : PHASE_OFF_STANDARDS_STRING,
-        "icon" : faShieldAlt,
+        "icon" : faArrowUp,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_STANDARDS,
         "phase_class" : "offensive-phase"
@@ -61,14 +75,14 @@ const phases = [
     },
     {
         "name" : PHASE_OFF_CONVERSION_STRING,
-        "icon" : faLevelDownAlt,
+        "icon" : faLevelUpAlt,
         "phase_category" : PHASE_OFF,
         "phase_id" : PHASE_OFF_CONVERSION,
         "phase_class" : "offensive-phase"
     },
     {
         "name" : PHASE_DEF_CONVERSION_STRING,
-        "icon" : faLevelUpAlt,
+        "icon" : faLevelDownAlt,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_CONVERSION,
         "phase_class" : "defensive-phase"
@@ -96,7 +110,7 @@ const phases = [
     },
     {
         "name" : PHASE_DEF_STANDARDS_STRING,
-        "icon" : faShieldAlt,
+        "icon" : faArrowDown,
         "phase_category" : PHASE_DEF,
         "phase_id" : PHASE_DEF_STANDARDS,
         "phase_class" : "defensive-phase"
@@ -109,11 +123,20 @@ export default class PhaseNavigation extends React.Component {
 
         this.state = {
             selectedPhase: null,
-            selected_phase_cat: null
+            selected_phase_cat: null,
+            open_nav: true
         };
 
         this.createPhaseNavigation = this.createPhaseNavigation.bind(this);
         this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
+        this.toggleOpen = this.toggleOpen.bind(this);
+    }
+
+    toggleOpen(){
+        let self = this;
+        this.setState({open_nav: !this.state.open_nav}, function(){
+            console.log(self.state.open_nav)
+        })
     }
 
     handlePhaseSelection(phase_id, phase_category){
@@ -152,7 +175,14 @@ export default class PhaseNavigation extends React.Component {
 
     render() {
         return (
-            <nav className={"phase-nav"}>
+            <nav className={`phase-nav ${this.state.open_nav ? "open-nav" : "closed-nav"}`}>
+                <Button className={"btn btn-primary toggle-open"} handleClick={() => this.toggleOpen()}>
+                    {this.state.open_nav
+                        ? <FontAwesomeIcon icon={faTimes} />
+                        : <FontAwesomeIcon icon={faBars} />
+                    }
+                </Button>
+
                 {this.props.children}
                 {this.createPhaseNavigation()}
             </nav>

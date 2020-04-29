@@ -1,8 +1,10 @@
-$phase-navigation-width: 230px;
+$phase-navigation-width: 250px;
 $phase-navigation-icon-size: 50px;
 
 $phase-navigation-width-mob: 210px;
 $phase-navigation-icon-size-mob: 30px;
+
+$burgerButtonSize: 40px;
 
 .phase-nav{
   h4{
@@ -10,8 +12,8 @@ $phase-navigation-icon-size-mob: 30px;
     text-align: left;
     position: absolute;
     z-index: 9999;
-    width: 100%;
-    padding: 20px 0 0 5px;
+    width: calc(100% - #{$burgerButtonSize});
+    padding: 20px 0 0 20px;
 
     @include queryThis($xs){
       padding: 5px 0 0 10px;
@@ -38,7 +40,27 @@ $phase-navigation-icon-size-mob: 30px;
   color: $white;
   height: 100vh;
   top: 0;
-  left: calc(-#{$phase-navigation-width} + (#{$phase-navigation-icon-size} + (#{$standardPadding} / 4)));
+  left: 0;
+
+  .toggle-open{
+    right: 0;
+    margin-right: 10px;
+    margin-top: 15px;
+    position: absolute;
+    width: $burgerButtonSize;
+    height: $burgerButtonSize;
+
+    svg{
+      float: none;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  &.closed-nav{
+    left: calc(-#{$phase-navigation-width} + (#{$phase-navigation-icon-size} + (#{$standardPadding} / 4)));
+  }
+
   transition: all 0.3s ease;
   @include boxSize();
   padding: 20px 0;
@@ -49,7 +71,7 @@ $phase-navigation-icon-size-mob: 30px;
     left: calc(-#{$phase-navigation-width-mob} + (#{$phase-navigation-icon-size-mob} / 5));
   }
 
-  &:hover{
+  &.open-nav{
     left: 0;
 
     @include queryThis($xs){
@@ -60,6 +82,7 @@ $phase-navigation-icon-size-mob: 30px;
   ul {
     margin-top: -5px;
     width: 100%;
+    padding-left: 20px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -82,6 +105,7 @@ $phase-navigation-icon-size-mob: 30px;
     font-size: 16px;
     line-height: 40px;
     margin: 0;
+    padding: 0;
     background: none;
     border: none!important;
     text-align: left;
@@ -180,7 +204,7 @@ $phase-navigation-icon-size-mob: 30px;
     &.cat-off{
       color: $white;
       text-align: left;
-      margin: 0 0 30px 5px;
+      margin: 0 0 30px 0px;
       font-size: 1em;
 
       @include queryThis($xs){
@@ -191,7 +215,7 @@ $phase-navigation-icon-size-mob: 30px;
     &.cat-def{
       color: $mainRed;
       text-align: left;
-      margin: 30px 0 0 5px;
+      margin: 30px 0 0 0px;
       font-size: 1em;
 
       @include queryThis($xs){
