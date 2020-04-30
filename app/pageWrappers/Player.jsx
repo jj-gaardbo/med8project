@@ -32,10 +32,9 @@ export default class Player extends React.Component {
             phaseCategorySelection: null,
             phaseSelection: null,
             playerObject: null,
-
             participantNo: null,
             participantTimestamp: null,
-            participantDateString: null,
+            participantDateString: null
         }
 
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
@@ -54,6 +53,10 @@ export default class Player extends React.Component {
             const { number, timestamp, dateString } = this.props.location.state;
             this.setState({participantNo: number, participantTimestamp: timestamp, participantDateString: dateString});
         }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        //this.state.mouseclicks = this.props.mouseclicks;
     }
 
     handleReturnPlayer(player){
@@ -138,7 +141,7 @@ export default class Player extends React.Component {
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
 
                     {this.state.participantNo !== null && this.state.participantTimestamp !== null && this.state.participantDateString !== null &&
-                        <Eval number={this.state.participantNo} timestamp={this.state.participantTimestamp} datestring={this.state.participantDateString} />
+                        <Eval mouseclicks={this.props.mouseclicks} chosenpos={this.state.playerSelection} number={this.state.participantNo} timestamp={this.state.participantTimestamp} datestring={this.state.participantDateString} />
                     }
 
                     {this.state.phaseSelection &&

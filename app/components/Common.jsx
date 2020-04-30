@@ -36,6 +36,23 @@ export const PHASE_OFF_PHASE_2_STRING = "Opbygningsspil Fase 2";
 export const PHASE_OFF_PHASE_3_STRING = "Afslutningsspil Fase 3";
 export const PHASE_OFF_CONVERSION_STRING = "Omstilling offensivt";
 
+export function getPlayerPosString(number){
+    switch (number) {
+        case POS_KEEPER:
+            return "Målmand";
+        case POS_CENTERBACK:
+            return "Midtstopper";
+        case POS_FULLBACK:
+            return "Back";
+        case POS_CENTERMIDFIELDER:
+            return "Central midt";
+        case POS_MIDFIELDER:
+            return "Kant";
+        case POS_STRIKER:
+            return "Angriber";
+    }
+}
+
 export function getPhaseTitle(phase_id){
     switch (phase_id) {
         case PHASE_DEF_STANDARDS:

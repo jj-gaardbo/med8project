@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {
     HashRouter as Router,
     Switch,
@@ -19,6 +20,24 @@ const pages = {
     "Player":"/player"
 };
 export default class Main extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mouseclicks: 0
+        }
+    }
+
+    componentDidMount() {
+        let self = this;
+        $('body').on('click', function(){
+            if(!$(this).hasClass('stop-count')){
+                self.setState({mouseclicks:self.state.mouseclicks+1});
+            }
+        });
+    }
+
     render() {
         return (
             <Router>
@@ -37,7 +56,7 @@ export default class Main extends React.Component {
                             <Player/>
                         </Route>*/}
 
-                        <Route path={pages.Player} render={(props) => <Player {...props} />} />
+                        <Route path={pages.Player} render={(props) => <Player mouseclicks={this.state.mouseclicks} {...props} />} />
                     </Switch>
                 </div>
             </Router>

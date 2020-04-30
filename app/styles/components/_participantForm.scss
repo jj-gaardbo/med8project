@@ -24,3 +24,24 @@
     display: inline-block;
   }
 }
+
+.eval{
+  .modal-button .modal-btn{
+    @include boxShadow();
+    border-radius: 50%;
+    border-color: $black;
+    width: 40px;
+    height: 40px;
+    background-color: $black;
+    color: $white;
+    @include transition();
+    opacity: 0.4;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}

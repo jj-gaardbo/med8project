@@ -3,7 +3,8 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {getPhaseTitle} from "./Common.jsx";
 import ButtonModal from "./ButtonModal.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
+
 import {modalOpenCheck} from "./Common.jsx";
 
 export default class ModalElement extends React.Component{
@@ -16,11 +17,20 @@ export default class ModalElement extends React.Component{
         this.toggle = this.toggle.bind(this);
     }
 
+    isOpen(){
+        return this.state.isOpen;
+    }
+
     toggle(){
         if(modalOpenCheck() && !this.state.isOpen){
             return;
         }
-        this.setState({isOpen: !this.state.isOpen});
+        let self = this;
+        this.setState({isOpen: !this.state.isOpen}, function(){
+            if(self.props.callback){
+                self.props.callback()
+            }
+        });
     }
 
     getIcon(icon){
@@ -28,6 +38,8 @@ export default class ModalElement extends React.Component{
             return(<FontAwesomeIcon icon={faUser} />);
         } else if(icon === "users"){
             return(<FontAwesomeIcon icon={faUsers} />);
+        } else if(icon === "summary"){
+            return(<FontAwesomeIcon icon={faSignInAlt} />);
         }
     }
 
