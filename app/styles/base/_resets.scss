@@ -114,3 +114,13 @@ p{
 .btn-primary{
 	background-color: $mainBlue;
 }
+
+.btn-warning{
+	background-color: $mainRed;
+	color: $white;
+
+	&:hover{
+		color: $white;
+		background-color: #e45757;
+	}
+}

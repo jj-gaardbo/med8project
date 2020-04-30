@@ -94,7 +94,7 @@ export default class Eval extends React.Component {
     render() {
         return (
             <div className={"eval"} {...this.props}>
-                <ModalElement callback={this.isOpen} ref={'summarymodal'} icon={'summary'} title={"Opsummering"}>
+                <ModalElement callback={this.isOpen} ref={'summarymodal'} icon={'summary'} title={"Opsummering"} className={'eval-modal'}>
                     <table className={"table"}>
                         <tbody>
                         <tr>
@@ -127,8 +127,14 @@ export default class Eval extends React.Component {
                     </table>
 
                     {this.state.isOpen &&
-                        <a href={"mailto:jgaard16@student.aau.dk?subject=Deltager "+this.state.id+ " - Nummer:" +this.state.number+ "&body="+this.getBody()}>
+                        <a className={'btn btn-primary'} href={"mailto:Med803kbh2020@create.aau.dk?subject=Deltager "+this.state.id+ " - Nummer:" +this.state.number+ "&body="+this.getBody()}>
                             Send resultat
+                        </a>
+                    }
+
+                    {this.state.isOpen &&
+                        <a className={'btn btn-warning'} href={"https://forms.gle/EuSQbg6g9LJBAtDD7"} target={'_blank'}>
+                            Spørgeskema
                         </a>
                     }
                 </ModalElement>
