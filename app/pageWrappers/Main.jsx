@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
     NavLink
@@ -33,9 +33,11 @@ export default class Main extends React.Component {
                         <Route path={pages.Home} exact>
                             <FrontPage/>
                         </Route>
-                        <Route path={pages.Player}>
+                        {/*<Route path={pages.Player}>
                             <Player/>
-                        </Route>
+                        </Route>*/}
+
+                        <Route path={pages.Player} render={(props) => <Player {...props} />} />
                     </Switch>
                 </div>
             </Router>

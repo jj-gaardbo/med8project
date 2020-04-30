@@ -19,6 +19,7 @@ import PhaseOffPhase2 from "../data/Phases/15.jsx";
 import PhaseOffPhase3 from "../data/Phases/16.jsx";
 import PhaseOffConversion from "../data/Phases/17.jsx";
 import {getPhaseTitle} from "../components/Common.jsx";
+import Eval from "../components/Eval.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -30,13 +31,29 @@ export default class Player extends React.Component {
             playerSelection: null,
             phaseCategorySelection: null,
             phaseSelection: null,
-            playerObject: null
+            playerObject: null,
+
+            participantNo: null,
+            participantTimestamp: null,
+            participantDateString: null,
         }
 
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
         this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
         this.handleReturnPlayer = this.handleReturnPlayer.bind(this);
 
+    }
+
+    componentDidMount() {
+        let number = localStorage.getItem('number')
+        let timestamp = localStorage.getItem('timestamp')
+        let dateString = localStorage.getItem('dateString')
+        if(number !== null && timestamp !== null && dateString !== null){
+            this.setState({participantNo: number, participantTimestamp: timestamp, participantDateString: dateString});
+        } else if(typeof this.props.location !== "undefined"){
+            const { number, timestamp, dateString } = this.props.location.state;
+            this.setState({participantNo: number, participantTimestamp: timestamp, participantDateString: dateString});
+        }
     }
 
     handleReturnPlayer(player){
@@ -119,6 +136,10 @@ export default class Player extends React.Component {
             <div className="player row">
                 <div className="col-lg-12">
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
+
+                    {this.state.participantNo !== null && this.state.participantTimestamp !== null && this.state.participantDateString !== null &&
+                        <Eval number={this.state.participantNo} timestamp={this.state.participantTimestamp} datestring={this.state.participantDateString} />
+                    }
 
                     {this.state.phaseSelection &&
                     <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>

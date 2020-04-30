@@ -6,6 +6,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-3-webpack-plugin");
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     title: 'Med8 - PROD',
@@ -44,29 +45,35 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.(png|jpg)$/, use: 'url-loader?limit=8192' },
-            { test: /\.mp4$/, use: 'file-loader'},
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.mp4$/, loader: 'file-loader'},
             {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: ["css-loader?minimize=true", "sass-loader"]
-                })
-            }
+                test: /\.(jpg|png|jpeg|gif|svg)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[hash].[ext]",
+                    },
+                },
+            },
+            { test: /\.eot$/, loader: 'url-loader?limit=100000&mimetype=application/vnd.ms-fontobject' },
+            { test: /\.woff2$/, loader: 'url-loader?limit=100000&mimetype=application/font-woff2' },
+            { test: /\.woff$/, loader: 'url-loader?limit=100000&mimetype=application/font-woff' },
+            { test: /\.ttf$/, loader: 'url-loader?limit=100000&mimetype=application/font-ttf' },
         ]
     },
 
     plugins: [
         new CleanWebpackPlugin(['dist']),
         htmlWebpackPlugin,
-        new webpack.optimize.UglifyJsPlugin({
+        /*new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compress: {
                 warnings: false
             }
-        }),
+        }),*/
         new webpack.optimize.AggressiveMergingPlugin(),
         new ModernizrWebpackPlugin(modernizrConfig),
         new ExtractTextPlugin('styles.css'),
@@ -79,6 +86,15 @@ module.exports = {
         }),
         new ManifestPlugin({
             fileName: 'asset-manifest.json', // Not to confuse with manifest.json
+        }),
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                warnings: false,
+                ie8: false,
+                output: {
+                    comments: false
+                }
+            }
         })
     ],
 };

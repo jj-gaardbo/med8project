@@ -36,8 +36,8 @@ module.exports = {
     output: {
         path: __dirname + '/dist',
         filename: "bundle.js",
-        chunkFilename: '[name].js',
-        publicPath: '/'
+        /*chunkFilename: '[name].js',
+        publicPath: '/'*/
     },
     devServer: {
         contentBase: __dirname + "/dist/",
@@ -84,6 +84,9 @@ module.exports = {
             "window.jQuery": "jquery",
             "window.Tether": 'tether',
             "Tether": 'tether'
-        })
-    ],
+        }),
+/*        new CopyWebpackPlugin([
+            {from:'eval.json',to:'eval.json'}
+        ]),*/
+    ]
 };

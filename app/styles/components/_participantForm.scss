@@ -1,0 +1,26 @@
+.participant-form{
+  margin: 0 auto;
+  width: 500px;
+
+  .form-group{
+    width: auto;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  label{
+    font-size: 16pt;
+  }
+
+  input{
+    width: 80%;
+    display: inline-block;
+    float: left;
+  }
+
+  button{
+    float: left;
+    width: 20%;
+    display: inline-block;
+  }
+}
