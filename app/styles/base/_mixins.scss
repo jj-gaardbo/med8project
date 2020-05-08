@@ -118,17 +118,42 @@ $xxl: 'min-width: 1366px';
   background: none;
   color: $white;
 
-  .card-header{
-    border: 1px solid $white;
-  }
-
-  .collapsed{
-
-  }
-
-  li, .accordion .card{
+  &>ul li{
     background: none;
-    border: none;
+  }
+
+  ul li{
+    border: none!important;
+    border-radius: 0!important;
+  }
+
+  .accordion{
+    color: $mainBlue;
+
+    .card{
+      border-color: $white;
+    }
+
+    .card-header{
+      border-color: $white;
+      button{
+        color: $white;
+        background-color: $mainBlue;
+      }
+
+      &.active-acc{
+        button{
+          transition: none;
+          background-color: $white;
+          color: $mainBlue;
+        }
+      }
+    }
+
+    .card-body{
+      color: $mainBlue;
+    }
+
   }
 
   .modal-content{
@@ -177,4 +202,30 @@ $xxl: 'min-width: 1366px';
       }
     }
   }
+
+  .accordion{
+
+    .card{
+      border-color: $mainRed;
+    }
+
+    .card-header{
+      border-color: $mainRed;
+      button{
+        color: $white;
+        background-color: $mainRed;
+      }
+
+      &.active-acc{
+        button{
+          transition: none;
+          background-color: $white;
+          color: $mainRed;
+        }
+      }
+    }
+
+  }
+
+
 }

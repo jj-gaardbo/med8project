@@ -1,0 +1,33 @@
+.accordion{
+  border-radius: 0;
+
+  .card{
+    border-radius: 0;
+    border-color: $mainRed;
+  }
+
+  .card-header{
+    cursor: pointer;
+    padding: 0;
+    border-radius: 0;
+
+    button{
+      strong{transition: none;}
+      border-radius: 0;
+      text-align: left;
+      width: 100%;
+      padding: 15px;
+    }
+  }
+
+  .card-body{
+    -webkit-box-shadow: inset 0px 8px 8px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 8px 8px 1px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 8px 8px 1px rgba(0,0,0,0.75);
+    border-radius: 0;
+    ul li{
+      border: none;
+    }
+  }
+
+}

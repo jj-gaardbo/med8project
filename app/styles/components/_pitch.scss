@@ -9,7 +9,7 @@
 .pitch{
   position: relative;
   width: 500px;
-  height: 740px;
+  height: $pitchHeight;
   left: calc(#{$phase-navigation-width} + 50px);
   top: 375px;
   margin-top: -380px;
@@ -18,12 +18,12 @@
   @include queryThis($sm){
     width: 300px;
     margin-left: -125px;
-    height: 510px;
+    height: $pitchHeightSM;
     margin-top: -222px;
   }
 
   @include queryThis($xs){
-    height: 440px;
+    height: $pitchHeightXS;
     top: 195px;
     left: 175px;
   }
@@ -120,5 +120,24 @@
       right: 0;
     }
   }
+}
 
+.content-col{
+  max-height: $pitchHeight;
+  overflow-y: scroll;
+  @include boxSize();
+  padding: 20px;
+  -ms-overflow-style: none;
+}
+
+.content-col::-webkit-scrollbar {
+  display: none;
+}
+
+.defence .content-col{
+  border: 1px solid $mainRed;
+}
+
+.offence .content-col{
+  border: 1px solid $white;
 }

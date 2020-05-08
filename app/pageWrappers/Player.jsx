@@ -194,7 +194,7 @@ export default class Player extends React.Component {
                             <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
-                        <div className="col-xl-6">
+                        <div className="col-xl-5 content-col">
                             {this.state.phaseSelection &&
                                 this.handlePhaseDom(this.state.phaseSelection)
                             }
