@@ -1,11 +1,3 @@
-$phase-navigation-width: 250px;
-$phase-navigation-icon-size: 50px;
-
-$phase-navigation-width-mob: 210px;
-$phase-navigation-icon-size-mob: 30px;
-
-$burgerButtonSize: 40px;
-
 .phase-nav{
   h4{
     color: $white;
@@ -41,6 +33,7 @@ $burgerButtonSize: 40px;
   height: 100vh;
   top: 0;
   left: 0;
+  -webkit-backface-visibility: hidden;
 
   .toggle-open{
     right: 0;

@@ -20,13 +20,44 @@ $xxl: 'min-width: 1366px';
   &:before{
     content: "";
     display: block;
-    height:50vh;
+    height:50%;
     background-color: $mainBlue;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    transition: all 1s ease;
   }
+
+  &.defence:before{
+    height: 0!important;
+  }
+
+  &.offence:before{
+    height: 100%;
+  }
+/*
+  &.offence:after{
+    height: 0;
+  }
+
+  &:after{
+    content: "";
+    display: block;
+    height:50vh;
+    background-color: $white;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    width: 100%;
+    transition: all 1s ease;
+    z-index: -1;
+  }
+
+  &.defence:after{
+    top:0;
+    height: 100vh;
+  }*/
 }
 
 @mixin boxShadow{
@@ -83,9 +114,22 @@ $xxl: 'min-width: 1366px';
 }
 
 
-@mixin modalThemeOffence(){
-  background-color: $mainBlue;
+@mixin ThemeOffence(){
+  background: none;
   color: $white;
+
+  .card-header{
+    border: 1px solid $white;
+  }
+
+  .collapsed{
+
+  }
+
+  li, .accordion .card{
+    background: none;
+    border: none;
+  }
 
   .modal-content{
     background-color: $mainBlue;
@@ -111,8 +155,9 @@ $xxl: 'min-width: 1366px';
   }
 }
 
-@mixin modalThemeDefence(){
+@mixin ThemeDefence(){
   color: $mainRed;
+  background: none;
 
   .modal-content{
     background-color: $white;

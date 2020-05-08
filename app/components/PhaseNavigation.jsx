@@ -175,7 +175,7 @@ export default class PhaseNavigation extends React.Component {
 
     render() {
         return (
-            <nav className={`phase-nav ${this.state.open_nav ? "open-nav" : "closed-nav"}`}>
+            <nav className={`full-height phase-nav ${this.state.open_nav ? "open-nav" : "closed-nav"}`}>
                 <Button className={"btn btn-primary toggle-open"} handleClick={() => this.toggleOpen()}>
                     {this.state.open_nav
                         ? <FontAwesomeIcon icon={faTimes} />

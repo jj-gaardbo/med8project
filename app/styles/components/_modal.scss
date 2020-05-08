@@ -3,13 +3,12 @@
     border-radius: 0;
   }
 
-
   &.theme-2{
-    @include modalThemeOffence();
+    @include ThemeOffence();
   }
 
   &.theme-1{
-    @include modalThemeDefence();
+    @include ThemeDefence();
   }
 
   &.modal-xl{

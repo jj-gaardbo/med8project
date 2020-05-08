@@ -1,11 +1,18 @@
+.theme-2{
+  @include ThemeOffence();
+}
+
+.theme-1{
+  @include ThemeDefence();
+}
+
 .pitch{
   position: relative;
   width: 500px;
   height: 740px;
-  left: 50%;
-  margin-left: -250px;
-  top: 50%;
-  margin-top: -371px;
+  left: calc(#{$phase-navigation-width} + 50px);
+  top: 375px;
+  margin-top: -380px;
   @include boxShadow();
 
   @include queryThis($sm){
@@ -17,6 +24,8 @@
 
   @include queryThis($xs){
     height: 440px;
+    top: 195px;
+    left: 175px;
   }
 
   .playerPos{

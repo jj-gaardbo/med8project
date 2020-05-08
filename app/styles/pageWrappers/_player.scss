@@ -7,16 +7,28 @@
   /**
   * This is an example of how to use the variables defined in the file called '_constants.scss'
    */
-  h3{
-    color: $white;
-  }
-
   .chosen-phase-title{
+    transition: all 1.3s ease;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    color: $white;
     @include boxSize();
     left:0;
-    top: calc(#{$headerComponentHeight} + 10px);
-    position: absolute;
+  }
+}
+
+body.defence{
+  .player{
+    .chosen-phase-title{
+      color: $mainRed;
+    }
+  }
+}
+
+body.offence{
+  .player{
+    .chosen-phase-title{
+      color: $white;
+    }
   }
 }

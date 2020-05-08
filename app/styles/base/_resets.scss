@@ -48,6 +48,10 @@ table {
 
 html, body{
 	font-family: 'HelveticaNeue-Medium', Arial, sans-serif;
+	height: 100vh;
+}
+
+body{
 	@include getBackground();
 }
 
@@ -55,9 +59,10 @@ html, body{
 	margin-top: -90px;
 }
 
-strong, p,li, i, td, h1, h2, h3, h4, h5, h6{
+strong, p,li, i, td, h1, h2, h3, h4, h5, h6, td, th{
 	line-height: 1.2em;
 	margin-bottom: 1em;
+	transition: color 1s ease;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -123,4 +128,17 @@ p{
 		color: $white;
 		background-color: #e45757;
 	}
+}
+
+.full-height{
+	height: 100vh;
+}
+
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	min-height: 100%;
+	transition: background-color 1s linear;
 }

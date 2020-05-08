@@ -20,6 +20,18 @@ import PhaseOffPhase3 from "../data/Phases/16.jsx";
 import PhaseOffConversion from "../data/Phases/17.jsx";
 import {getPhaseTitle} from "../components/Common.jsx";
 import Eval from "../components/Eval.jsx";
+import $ from 'jquery';
+import PhaseDefStandardsAcc from "../data/Phases/_8.jsx";
+import PhaseOffStandardsAcc from "../data/Phases/_9.jsx";
+import PhaseDefHighPressureAcc from "../data/Phases/_10.jsx";
+import PhaseDefMediumLowPressureAcc from "../data/Phases/_11.jsx";
+import PhaseDefFieldDefenceAcc from "../data/Phases/_12.jsx";
+import PhaseDefConversionAcc from "../data/Phases/_13.jsx";
+import PhaseOffPhase1Acc from "../data/Phases/_14.jsx";
+import PhaseOffPhase2Acc from "../data/Phases/_15.jsx";
+import PhaseOffPhase3Acc from "../data/Phases/_16.jsx";
+import PhaseOffConversionAcc from "../data/Phases/_17.jsx";
+
 
 /**
  * This is a simple example of a simple subpage
@@ -40,6 +52,7 @@ export default class Player extends React.Component {
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
         this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
         this.handleReturnPlayer = this.handleReturnPlayer.bind(this);
+        this.handlePhaseDom = this.handlePhaseDom.bind(this);
 
     }
 
@@ -96,12 +109,16 @@ export default class Player extends React.Component {
         this.setState({phaseCategorySelection: phase_cat, phaseSelection: phase_id},function(){
             this.refs.datahandler.update(this.state);
         });
+
+        let body = $('body');
+        body.removeClass('defence');
+        body.removeClass('offence');
         switch(phase_cat){
             case PHASE_DEF:
-                console.log("Defence selected "+ phase_id);
+                body.addClass('defence');
                 break;
             case PHASE_OFF:
-                console.log("Offence selected "+ phase_id);
+                body.addClass('offence');
                 break;
             default:
                 console.log("NULL");
@@ -112,25 +129,25 @@ export default class Player extends React.Component {
     handlePhaseDom(phase_id){
         switch (phase_id) {
             case PHASE_DEF_HIGH_PRESSURE:
-                return <PhaseDefHighPressure theme={"theme-1"}/>
+                return <PhaseDefHighPressureAcc theme={"theme-1"}/>
             case PHASE_DEF_MEDIUM_LOW_PRESSURE:
-                return <PhaseDefMediumLowPressure theme={"theme-1"}/>
+                return <PhaseDefMediumLowPressureAcc theme={"theme-1"}/>
             case PHASE_DEF_FIELD_DEFENCE:
-                return <PhaseDefFieldDefence theme={"theme-1"}/>
+                return <PhaseDefFieldDefenceAcc theme={"theme-1"}/>
             case PHASE_DEF_CONVERSION:
-                return <PhaseDefConversion theme={"theme-1"}/>
+                return <PhaseDefConversionAcc theme={"theme-1"}/>
             case PHASE_OFF_PHASE_1:
-                return <PhaseOffPhase1 theme={"theme-2"}/>
+                return <PhaseOffPhase1Acc theme={"theme-2"}/>
             case PHASE_OFF_PHASE_2:
-                return <PhaseOffPhase2 theme={"theme-2"}/>
+                return <PhaseOffPhase2Acc theme={"theme-2"}/>
             case PHASE_OFF_PHASE_3:
-                return <PhaseOffPhase3 theme={"theme-2"}/>
+                return <PhaseOffPhase3Acc theme={"theme-2"}/>
             case PHASE_OFF_CONVERSION:
-                return <PhaseOffConversion theme={"theme-2"}/>
+                return <PhaseOffConversionAcc theme={"theme-2"}/>
             case PHASE_DEF_STANDARDS:
-                return <PhaseDefStandards theme={"theme-1"}/>
+                return <PhaseDefStandardsAcc theme={"theme-1"}/>
             case PHASE_OFF_STANDARDS:
-                return <PhaseOffStandards theme={"theme-2"}/>
+                return <PhaseOffStandardsAcc theme={"theme-2"}/>
         }
     }
 
@@ -138,17 +155,28 @@ export default class Player extends React.Component {
         return (
             <div className="player row">
                 <div className="col-lg-12">
+
                     <DataHandler handleReturnPlayer={this.handleReturnPlayer} ref={"datahandler"} phaseCategory={this.state.phaseCategorySelection} phase={this.state.phaseSelection} player={this.state.playerSelection}/>
 
                     {this.state.participantNo !== null && this.state.participantTimestamp !== null && this.state.participantDateString !== null &&
                         <Eval mouseclicks={this.props.mouseclicks} chosenpos={this.state.playerSelection} number={this.state.participantNo} timestamp={this.state.participantTimestamp} datestring={this.state.participantDateString} />
                     }
 
-                    {this.state.phaseSelection &&
-                    <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>
-                    }
+                    {this.state.phaseSelection ? (
+                        <div className="row">
+                            <div className="col-xs-11 offset-1 col-lg-10 col-xl-10 offset-lg-2 offset-xl-2">
+                                <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="row">
+                            <div className="col-xs-11 offset-1 col-lg-10 col-xl-10 offset-lg-2 offset-xl-2">
+                                <h3 className={'chosen-phase-title'}>Vælg fase</h3>
+                            </div>
+                        </div>
+                    )}
 
-                    <HeaderComponent>
+{/*                    <HeaderComponent>
                         {this.state.playerObject && this.state.phaseSelection &&
                         <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
                             <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
@@ -158,12 +186,26 @@ export default class Player extends React.Component {
                         {this.state.phaseSelection &&
                         this.handlePhaseDom(this.state.phaseSelection)
                         }
-                    </HeaderComponent>
+                    </HeaderComponent>*/}
 
-                    <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
+
+                    <div className="row full-height">
+                        <div className="col-xl-6">
+                            <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
+                        </div>
+
+                        <div className="col-xl-6">
+                            {this.state.phaseSelection &&
+                                this.handlePhaseDom(this.state.phaseSelection)
+                            }
+                        </div>
+                    </div>
+
+
                     <PhaseNavigation handlePhaseSelection={this.handlePhaseSelection}>
                         <h4>Vælg spil fase</h4>
                     </PhaseNavigation>
+
                 </div>
             </div>
         )
