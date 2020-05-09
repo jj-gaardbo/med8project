@@ -2,6 +2,10 @@
   margin: 0 auto;
   width: 500px;
 
+  @include queryThis($xs){
+    width: 100%;
+  }
+
   .form-group{
     width: auto;
     height: auto;

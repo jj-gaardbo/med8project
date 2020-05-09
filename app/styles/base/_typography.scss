@@ -1,0 +1,68 @@
+
+strong, p,li, i, td, h1, h2, h3, h4, h5, h6, td, th{
+  line-height: 1.2em;
+  margin-bottom: 1em;
+  transition: color 1s ease;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "HelveticaNeue-Bold", Arial, sans-serif;
+  font-weight: 500;
+}
+
+h1{
+  font-size: 26pt;
+  @include queryThis($xs){
+    font-size: 22pt;
+  }
+}
+
+h2{
+  font-size: 24pt;
+  @include queryThis($xs){
+    font-size: 20pt;
+  }
+}
+
+h3{
+  font-size: 22pt;
+  @include queryThis($xs){
+    font-size: 16pt;
+  }
+}
+
+h4{
+  font-size: 18pt;
+  @include queryThis($xs){
+    font-size: 12pt;
+  }
+}
+
+h5{
+  font-size: 16pt;
+  @include queryThis($xs){
+    font-size: 10pt;
+  }
+}
+
+h6{
+  font-size: 14pt;
+  @include queryThis($xs){
+    font-size: 8pt;
+  }
+}
+
+strong, li, p{
+  font-size: 14pt;
+  @include queryThis($xs){
+    font-size: 12pt;
+  }
+}
+
+strong{
+  font-weight: 700;
+}
+
+p{
+  font-family: "HelveticaNeue-Medium", Arial, sans-serif;
+}

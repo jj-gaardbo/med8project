@@ -20,13 +20,17 @@ $xxl: 'min-width: 1366px';
   &:before{
     content: "";
     display: block;
-    height:50%;
+    height:50vh;
     background-color: $mainBlue;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     transition: all 1s ease;
+
+    @include queryThis($xs){
+      height:60.4vh;
+    }
   }
 
   &.defence:before{
@@ -123,18 +127,18 @@ $xxl: 'min-width: 1366px';
   }
 
   ul li{
-    border: none!important;
+    border-color: none!important;
     border-radius: 0!important;
   }
 
   .accordion{
 
     .card{
-      border-color: $white;
+      border-color: $mainBlue;
     }
 
     .card-header{
-      border-color: $white;
+      border-color: $mainBlue;
       button{
         color: $white;
         background-color: $mainBlue;
@@ -145,6 +149,16 @@ $xxl: 'min-width: 1366px';
           transition: none;
           background-color: $white;
           color: $mainBlue;
+        }
+      }
+    }
+
+    .card.secondary{
+      border-color: $goalieColor;
+      .card-header{
+        border-color: $goalieColor;
+        button{
+          background-color: $goalieColor;
         }
       }
     }

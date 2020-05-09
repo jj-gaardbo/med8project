@@ -4,6 +4,7 @@
   .card{
     border-radius: 0;
     border-color: $mainRed;
+    margin-bottom: 2px;
   }
 
   .card-header{
@@ -12,11 +13,25 @@
     border-radius: 0;
 
     button{
-      strong{transition: none;}
+      text-decoration: none;
+      &:hover{
+        text-decoration: none;
+      }
+
+      strong{
+        transition: none;
+      }
       border-radius: 0;
       text-align: left;
       width: 100%;
       padding: 15px;
+
+      span{
+        white-space: break-spaces;
+        display: block;
+        max-width: 100%;
+        word-wrap: break-word;
+      }
     }
   }
 

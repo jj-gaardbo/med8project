@@ -8,7 +8,7 @@
     padding: 20px 0 0 20px;
 
     @include queryThis($xs){
-      padding: 5px 0 0 10px;
+      padding: 0 0 0 10px;
     }
   }
 
@@ -21,6 +21,10 @@
     top: 0;
     left: 0;
     width: 100%;
+
+    @include queryThis($xs){
+      margin-top:-10px;;
+    }
   }
 
   width: calc(#{$phase-navigation-width} + #{$standardPadding});
@@ -89,14 +93,15 @@
     top: 50%;
     transform: translateY(-50%);
     @include queryThis($xs){
-      margin-top: -10px;
+      margin-top: -20px;
+      padding-left: 10px;
     }
 
     li{
       margin: 0 0 0 0;
 
       @include queryThis($xs){
-        margin: 0 0 0 10px;
+        margin: 0 0 0 0;
       }
     }
   }
@@ -116,6 +121,7 @@
 
     @include queryThis($xs){
       padding: 0 0;
+      line-height: 40px;
     }
 
     &:active {
@@ -210,7 +216,7 @@
       font-size: 1em;
 
       @include queryThis($xs){
-        margin: 0 0 20px 10px;
+        display: none;
       }
     }
 
@@ -221,7 +227,8 @@
       font-size: 1em;
 
       @include queryThis($xs){
-        margin: 20px 0 0 10px;
+        margin: 0 0 0 0;
+        display: none;
       }
     }
   }

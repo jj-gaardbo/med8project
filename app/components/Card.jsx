@@ -24,7 +24,7 @@ export default class AccordionCardComponent extends React.Component{
 
     render(){
         return(
-            <div className={"card"}>
+            <div className={`card ${this.props.className ? this.props.className : ""}`}>
                 <div className="card-header" id={`${this.props.parentId}-h${this.props.index}`}>
                     <h2 className={'mb-0'}>
                         <button

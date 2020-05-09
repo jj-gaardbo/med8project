@@ -8,16 +8,6 @@ import PhaseNavigation from "../components/PhaseNavigation.jsx";
 import DataHandler from "../components/DataHandler.jsx";
 import ModalElement from "../components/Modal.jsx";
 import HeaderComponent from "../components/HeaderComponent.jsx";
-import PhaseDefHighPressure from "../data/Phases/10.jsx";
-import PhaseDefMediumLowPressure from "../data/Phases/11.jsx";
-import PhaseDefFieldDefence from "../data/Phases/12.jsx";
-import PhaseDefConversion from "../data/Phases/13.jsx";
-import PhaseDefStandards from "../data/Phases/8.jsx";
-import PhaseOffStandards from "../data/Phases/9.jsx";
-import PhaseOffPhase1 from "../data/Phases/14.jsx";
-import PhaseOffPhase2 from "../data/Phases/15.jsx";
-import PhaseOffPhase3 from "../data/Phases/16.jsx";
-import PhaseOffConversion from "../data/Phases/17.jsx";
 import {getPhaseTitle} from "../components/Common.jsx";
 import Eval from "../components/Eval.jsx";
 import $ from 'jquery';
@@ -31,6 +21,13 @@ import PhaseOffPhase1Acc from "../data/Phases/_14.jsx";
 import PhaseOffPhase2Acc from "../data/Phases/_15.jsx";
 import PhaseOffPhase3Acc from "../data/Phases/_16.jsx";
 import PhaseOffConversionAcc from "../data/Phases/_17.jsx";
+
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 
 /**
@@ -194,11 +191,31 @@ export default class Player extends React.Component {
                             <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
-                        <div className="col-xl-5 content-col">
-                            {this.state.phaseSelection &&
-                                this.handlePhaseDom(this.state.phaseSelection)
-                            }
-                        </div>
+                        {this.state.phaseSelection && BrowserView ? (
+                                <div className="col-xl-5 content-col">
+                                    {this.handlePhaseDom(this.state.phaseSelection)}
+                                </div>
+                        )
+                        : this.state.phaseSelection && MobileView ? (
+                                <ModalElement icon={"users"} title={"Holdets rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
+                                    <div className="col-xl-5 content-col">
+                                        {this.handlePhaseDom(this.state.phaseSelection)}
+                                    </div>
+                                </ModalElement>
+                        )
+                        : "Vælg fase"}
+
+{/*
+                        {this.state.phaseSelection && BrowserView ? (
+                                <div className="col-xl-5 content-col">
+                                    {this.handlePhaseDom(this.state.phaseSelection)}
+                                </div>
+                            ) : (
+                                <div className="col-xl-5 content-col">
+                                    {this.handlePhaseDom(this.state.phaseSelection)}
+                                </div>
+                            )
+                        }*/}
                     </div>
 
 

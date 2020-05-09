@@ -42,6 +42,12 @@ import {
     PHASE_DEF_STANDARDS_STRING,
 } from "./Common.jsx";
 import Button from "./Button.jsx";
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 
 const phases = [
@@ -124,7 +130,7 @@ export default class PhaseNavigation extends React.Component {
         this.state = {
             selectedPhase: null,
             selected_phase_cat: null,
-            open_nav: true
+            open_nav: !MobileView
         };
 
         this.createPhaseNavigation = this.createPhaseNavigation.bind(this);

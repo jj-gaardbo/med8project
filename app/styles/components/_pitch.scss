@@ -24,7 +24,7 @@
 
   @include queryThis($xs){
     height: $pitchHeightXS;
-    top: 195px;
+    top: 295px;
     left: 175px;
   }
 
@@ -124,11 +124,25 @@
 
 .content-col{
   max-height: $pitchHeight;
+  height: auto;
+  float: none;
   overflow-y: scroll;
   @include boxSize();
   padding: 20px;
   -ms-overflow-style: none;
   @include boxShadow();
+
+  .mindset{
+    background-color: $black;
+    @include boxSize();
+    padding: 20px;
+    margin-bottom: 20px;
+
+    ul,li{
+      background: none;
+    }
+    color: $white!important;
+  }
 }
 
 .content-col::-webkit-scrollbar {
@@ -140,5 +154,5 @@
 }
 
 .offence .content-col{
-  background-color: $mainBlue;
+  background-color: $white;
 }
