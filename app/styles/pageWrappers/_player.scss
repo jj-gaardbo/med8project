@@ -17,6 +17,12 @@
   }
 }
 
+.player-svg{
+  .player-btn{
+    transition: transform 1s ease;
+  }
+}
+
 body.defence{
   .player{
     .chosen-phase-title{
@@ -29,6 +35,12 @@ body.offence{
   .player{
     .chosen-phase-title{
       color: $white;
+    }
+  }
+
+  .player-svg{
+    .player-btn{
+      transform: translateY(-215px);
     }
   }
 }

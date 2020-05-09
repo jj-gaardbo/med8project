@@ -92,7 +92,7 @@ export default class Pitch extends React.Component {
 
                 <img src={pitchBackground} alt="Pitch" className={"pitch_background"}/>
 
-                <Selection className={`overlay selection ${this.state.overlays[0] ? "shown" : "hidden"}`} onSelect={this.handlePlayerSelection} highlight={this.state.chosenPosition} />
+                <Selection className={`overlay selection player-svg ${this.state.overlays[0] ? "shown" : "hidden"}`} onSelect={this.handlePlayerSelection} highlight={this.state.chosenPosition} />
 
                 <Channels className={`overlay channels ${this.state.overlays[1] ? "shown" : "hidden"}`}/>
 

@@ -10,7 +10,7 @@
   position: relative;
   width: 500px;
   height: $pitchHeight;
-  left: calc(#{$phase-navigation-width} + 50px);
+  left: calc(#{$phase-navigation-width} + 100px);
   top: 375px;
   margin-top: -380px;
   @include boxShadow();
@@ -128,6 +128,7 @@
   @include boxSize();
   padding: 20px;
   -ms-overflow-style: none;
+  @include boxShadow();
 }
 
 .content-col::-webkit-scrollbar {
@@ -135,9 +136,9 @@
 }
 
 .defence .content-col{
-  border: 1px solid $mainRed;
+  background-color: $white;
 }
 
 .offence .content-col{
-  border: 1px solid $white;
+  background-color: $mainBlue;
 }
