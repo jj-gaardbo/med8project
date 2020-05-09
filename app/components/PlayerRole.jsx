@@ -1,6 +1,6 @@
 import React from 'react';
 import {PHASE_DEF_STANDARDS, PHASE_OFF_STANDARDS, PHASE_OFF, PHASE_DEF, PHASE_DEF_HIGH_PRESSURE, PHASE_DEF_MEDIUM_LOW_PRESSURE, PHASE_DEF_FIELD_DEFENCE, PHASE_DEF_CONVERSION, PHASE_OFF_PHASE_1, PHASE_OFF_PHASE_2, PHASE_OFF_PHASE_3, PHASE_OFF_CONVERSION} from "./Common.jsx";
-import {getPhaseTitle} from "./Common.jsx";
+import {getPhaseTitle, getPlayerPosString} from "./Common.jsx";
 
 export default class PlayerRole{
 

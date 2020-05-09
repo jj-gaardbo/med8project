@@ -8,7 +8,7 @@ import PhaseNavigation from "../components/PhaseNavigation.jsx";
 import DataHandler from "../components/DataHandler.jsx";
 import ModalElement from "../components/Modal.jsx";
 import HeaderComponent from "../components/HeaderComponent.jsx";
-import {getPhaseTitle} from "../components/Common.jsx";
+import {getPhaseTitle, getPlayerPosString} from "../components/Common.jsx";
 import Eval from "../components/Eval.jsx";
 import $ from 'jquery';
 import PhaseDefStandardsAcc from "../data/Phases/_8.jsx";
@@ -21,6 +21,8 @@ import PhaseOffPhase1Acc from "../data/Phases/_14.jsx";
 import PhaseOffPhase2Acc from "../data/Phases/_15.jsx";
 import PhaseOffPhase3Acc from "../data/Phases/_16.jsx";
 import PhaseOffConversionAcc from "../data/Phases/_17.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faUser, faUsers, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 
 import {
     BrowserView,
@@ -28,7 +30,7 @@ import {
     isBrowser,
     isMobile
 } from "react-device-detect";
-
+import Button from "../components/Button.jsx";
 
 /**
  * This is a simple example of a simple subpage
@@ -43,13 +45,31 @@ export default class Player extends React.Component {
             playerObject: null,
             participantNo: null,
             participantTimestamp: null,
-            participantDateString: null
+            participantDateString: null,
+            isVisiblePlayerRole: false,
+            isVisibleTeamRole: true,
         }
 
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
         this.handlePhaseSelection = this.handlePhaseSelection.bind(this);
         this.handleReturnPlayer = this.handleReturnPlayer.bind(this);
         this.handlePhaseDom = this.handlePhaseDom.bind(this);
+        this.handleRoleToggle = this.handleRoleToggle.bind(this);
+
+    }
+
+    handleRoleToggle(index){
+        if(this.state.playerObject === null){
+            return;
+        }
+
+        if(index === 0){
+            this.setState({isVisiblePlayerRole: false, isVisibleTeamRole: true});
+        }
+        else if(index === 1){
+            this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
+        }
+
 
     }
 
@@ -79,25 +99,25 @@ export default class Player extends React.Component {
         });
         switch(selection){
             case POS_KEEPER:
-                console.log("Keeper chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             case POS_CENTERMIDFIELDER:
-                console.log("Central midfielder chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             case POS_MIDFIELDER:
-                console.log("Midfielder chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             case POS_CENTERBACK:
-                console.log("Center back chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             case POS_STRIKER:
-                console.log("Striker chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             case POS_FULLBACK:
-                console.log("Fullback chosen");
+                this.setState({isVisiblePlayerRole: true, isVisibleTeamRole: false});
                 break;
             default:
-                console.log("NULL");
+                this.setState({isVisiblePlayerRole: false, isVisibleTeamRole: true});
                 break;
         }
     }
@@ -161,9 +181,20 @@ export default class Player extends React.Component {
 
                     {this.state.phaseSelection ? (
                         <div className="row">
-                            <div className="col-xs-11 offset-1 col-lg-10 col-xl-10 offset-lg-2 offset-xl-2">
+                            <div className="col-xs-11 offset-1 col-lg-4 col-xl-4 offset-lg-2 offset-xl-2">
                                 <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>
                             </div>
+
+                            {this.state.playerSelection &&
+                                <div className="col-xl-5 toggle-role-bottons">
+                                    <Button className={`${"theme-"+this.state.phaseCategorySelection} btn btn-primary${this.state.isVisibleTeamRole ? " btn-highlight" : ""}`} handleClick={() => this.handleRoleToggle(0)}>
+                                        <FontAwesomeIcon icon={faUsers} /> Holdets rolle
+                                    </Button>
+                                    <Button className={`${"theme-"+this.state.phaseCategorySelection} btn btn-primary${this.state.isVisiblePlayerRole ? " btn-highlight" : ""}`} handleClick={() => this.handleRoleToggle(1)}>
+                                        <FontAwesomeIcon icon={faUser} /> Din rolle
+                                    </Button>
+                                </div>
+                            }
                         </div>
                     ) : (
                         <div className="row">
@@ -191,19 +222,25 @@ export default class Player extends React.Component {
                             <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
-                        {this.state.phaseSelection && BrowserView ? (
-                                <div className="col-xl-5 content-col">
-                                    {this.handlePhaseDom(this.state.phaseSelection)}
-                                </div>
-                        )
-                        : this.state.phaseSelection && MobileView ? (
+                        {this.state.phaseSelection && isMobile ? (
                                 <ModalElement icon={"users"} title={"Holdets rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
                                     <div className="col-xl-5 content-col">
                                         {this.handlePhaseDom(this.state.phaseSelection)}
                                     </div>
                                 </ModalElement>
                         )
-                        : "Vælg fase"}
+                        : this.state.playerObject && this.state.phaseSelection && this.state.isVisiblePlayerRole ? (
+                                <div className={`${"theme-"+this.state.phaseCategorySelection} col-xl-5 content-col player-role-content`}>
+                                    <h3>{getPlayerPosString(this.state.playerSelection)}</h3>
+                                    <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                                </div>
+                        )
+                        : this.state.phaseSelection && this.state.isVisibleTeamRole ? (
+                                <div className="col-xl-5 content-col">
+                                    {this.handlePhaseDom(this.state.phaseSelection)}
+                                </div>
+                        )
+                        : ""}
 
 {/*
                         {this.state.phaseSelection && BrowserView ? (

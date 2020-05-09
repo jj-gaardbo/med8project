@@ -130,7 +130,7 @@ export default class PhaseNavigation extends React.Component {
         this.state = {
             selectedPhase: null,
             selected_phase_cat: null,
-            open_nav: !MobileView
+            open_nav: !isMobile
         };
 
         this.createPhaseNavigation = this.createPhaseNavigation.bind(this);

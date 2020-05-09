@@ -37,3 +37,12 @@
     }
   }
 }
+
+.toggle-role-bottons{
+  padding: 20px;
+  button{
+    &:last-child{
+      float: right;
+    }
+  }
+}
