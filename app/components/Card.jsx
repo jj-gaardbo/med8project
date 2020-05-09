@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import Collapse from "bootstrap/js/src/collapse";
 
 export default class AccordionCardComponent extends React.Component{
 
@@ -20,6 +21,7 @@ export default class AccordionCardComponent extends React.Component{
         if(collapse.attr('aria-expanded') === 'true'){
             header.addClass('active-acc')
         }
+        return;
     }
 
     render(){

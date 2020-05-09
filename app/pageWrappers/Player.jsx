@@ -48,6 +48,7 @@ export default class Player extends React.Component {
             participantDateString: null,
             isVisiblePlayerRole: false,
             isVisibleTeamRole: true,
+            externalOverlay: null
         }
 
         this.handlePlayerSelection = this.handlePlayerSelection.bind(this);
@@ -55,7 +56,14 @@ export default class Player extends React.Component {
         this.handleReturnPlayer = this.handleReturnPlayer.bind(this);
         this.handlePhaseDom = this.handlePhaseDom.bind(this);
         this.handleRoleToggle = this.handleRoleToggle.bind(this);
+        this.handleExternalOverlay = this.handleExternalOverlay.bind(this)
 
+    }
+
+    handleExternalOverlay(index){
+        this.setState({externalOverlay: index}, function(){
+            this.setState({externalOverlay: null});
+        });
     }
 
     handleRoleToggle(index){
@@ -150,7 +158,7 @@ export default class Player extends React.Component {
             case PHASE_DEF_MEDIUM_LOW_PRESSURE:
                 return <PhaseDefMediumLowPressureAcc theme={"theme-1"}/>
             case PHASE_DEF_FIELD_DEFENCE:
-                return <PhaseDefFieldDefenceAcc theme={"theme-1"}/>
+                return <PhaseDefFieldDefenceAcc externalOverlay={() => this.handleExternalOverlay(4)} theme={"theme-1"}/>
             case PHASE_DEF_CONVERSION:
                 return <PhaseDefConversionAcc theme={"theme-1"}/>
             case PHASE_OFF_PHASE_1:
@@ -162,7 +170,7 @@ export default class Player extends React.Component {
             case PHASE_OFF_CONVERSION:
                 return <PhaseOffConversionAcc theme={"theme-2"}/>
             case PHASE_DEF_STANDARDS:
-                return <PhaseDefStandardsAcc theme={"theme-1"}/>
+                return <PhaseDefStandardsAcc externalOverlay={() => this.handleExternalOverlay(5)} theme={"theme-1"}/>
             case PHASE_OFF_STANDARDS:
                 return <PhaseOffStandardsAcc theme={"theme-2"}/>
         }
@@ -219,7 +227,7 @@ export default class Player extends React.Component {
 
                     <div className="row full-height">
                         <div className="col-xl-6">
-                            <Pitch phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
+                            <Pitch externalOverlay={this.state.externalOverlay} phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
                         {this.state.phaseSelection && isMobile ? (

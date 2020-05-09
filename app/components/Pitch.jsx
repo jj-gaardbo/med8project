@@ -10,6 +10,8 @@ import {PHASE_DEF, PHASE_OFF} from "./Common.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLocationArrow, faVectorSquare} from '@fortawesome/free-solid-svg-icons'
 import TooltipElement from "./Tooltip.jsx";
+import DefStdFreekick from "./DefStdFreekick.jsx";
+import Cutback from "./Cutback.jsx";
 
 export default class Pitch extends React.Component {
     constructor(props) {
@@ -18,6 +20,8 @@ export default class Pitch extends React.Component {
             index:0,
             overlays: [
                 true,
+                false,
+                false,
                 false,
                 false,
                 false
@@ -70,7 +74,7 @@ export default class Pitch extends React.Component {
     toggleOverlay(showOverlay = 0){
         if(this.state.progressTimer !== null){ console.log("!"); return;}
         let self = this;
-        let overlays = [false,false,false,false];
+        let overlays = [false,false,false,false,false,false];
         overlays[showOverlay] = true;
         this.setState({overlays: overlays});
 
@@ -81,6 +85,12 @@ export default class Pitch extends React.Component {
                 self.toggleOverlay(0);
                 clearTimeout(self.state.timer);
             }, this.state.timeout);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.externalOverlay !== null){
+            this.toggleOverlay(this.props.externalOverlay);
         }
     }
 
@@ -99,6 +109,10 @@ export default class Pitch extends React.Component {
                 <ZonesDef phaseselection={this.props.phaseSelection} className={`overlay zones-def ${this.state.overlays[2] ? "shown" : "hidden"}`}/>
 
                 <ZonesOff phaseselection={this.props.phaseSelection} className={`overlay zones-off ${this.state.overlays[3] ? "shown" : "hidden"}`}/>
+
+                <Cutback className={`overlay cutback ${this.state.overlays[4] ? "shown" : "hidden"}`}/>
+
+                <DefStdFreekick className={`overlay field-defence ${this.state.overlays[5] ? "shown" : "hidden"}`}/>
 
                 <TooltipElement
                     element={<Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /></Button>}
