@@ -265,3 +265,199 @@ $xxl: 'min-width: 1366px';
     background-color: $white;
   }
 }
+
+
+
+@mixin getKeeperPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #k.player-btn{
+      transform: translateY(-100px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #k.player-btn{
+      transform: translateY(-30px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #k.player-btn{
+      transform: translateY(40px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #k.player-btn{
+      transform: translateY(0px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #k.player-btn{
+      transform: translateY(-100px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #k.player-btn{
+      transform: translateY(-100px);
+    }
+  } @else {
+    #k.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}
+
+@mixin getStrikerPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(-130px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(80px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(300px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(210px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(-50px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(-200px);
+    }
+  } @else {
+    #s_1_.player-btn , #s.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}
+
+
+@mixin getCenterMidfielderPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(-130px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(80px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(260px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(180px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(-80px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(-230px);
+    }
+  } @else {
+    #cmf_1_.player-btn, #cmf.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}
+
+
+@mixin getMidfielderPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(-130px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(80px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(260px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(180px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(-80px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(-230px);
+    }
+  } @else {
+    #mf_1_.player-btn, #mf.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}
+
+@mixin getCenterBackPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(-140px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(60px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(210px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(140px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(-120px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(-280px);
+    }
+  } @else {
+    #cb_1_.player-btn, #cb.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}
+
+@mixin getFullBackPos($phase){
+  @if $phase == 'def-high-pressure' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(-140px);
+    }
+  } @else if $phase == 'def-medium-low-pressure' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(60px);
+    }
+  } @else if $phase == 'def-field-defence' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(210px);
+    }
+  } @else if $phase == 'off-phase-1' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(140px);
+    }
+  } @else if $phase == 'off-phase-2' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(-120px);
+    }
+  } @else if $phase == 'off-phase-3' {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(-280px);
+    }
+  } @else {
+    #fb_1_.player-btn, #fb.player-btn{
+      transform: translateY(-0px);
+    }
+  }
+}

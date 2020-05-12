@@ -8,24 +8,23 @@
 
 .pitch{
   position: relative;
-  width: 500px;
+  width: 100%;
   height: $pitchHeight;
-  left: calc(#{$phase-navigation-width} + 100px);
-  top: 375px;
-  margin-top: -380px;
+  max-width: 500px;
   @include boxShadow();
 
-  @include queryThis($sm){
-    width: 300px;
-    margin-left: -125px;
+  @include queryThis($xl){
+    float: right;
+  }
+
+  @include queryThis($lg){
+    float: none;
+    margin: 0 auto;
     height: $pitchHeightSM;
-    margin-top: -222px;
   }
 
   @include queryThis($xs){
-    height: $pitchHeightXS;
-    top: 295px;
-    left: 175px;
+    width: 300px;
   }
 
   .playerPos{
@@ -123,14 +122,17 @@
 }
 
 .content-col{
-  max-height: $pitchHeight;
-  height: auto;
-  float: none;
+  height: $pitchHeight;
+  width: 97%;
   overflow-y: scroll;
   @include boxSize();
   padding: 20px;
   -ms-overflow-style: none;
   @include boxShadow();
+
+  @include queryThis($md){
+    width: 100%;
+  }
 
   .mindset{
     background-color: $black;

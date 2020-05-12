@@ -57,6 +57,7 @@ export default class Player extends React.Component {
         this.handlePhaseDom = this.handlePhaseDom.bind(this);
         this.handleRoleToggle = this.handleRoleToggle.bind(this);
         this.handleExternalOverlay = this.handleExternalOverlay.bind(this)
+        this.addBodyClasses = this.addBodyClasses.bind(this)
 
     }
 
@@ -130,28 +131,53 @@ export default class Player extends React.Component {
         }
     }
 
+    addBodyClasses(phase_id){
+        let body = $('body');
+        body.removeClass('defence offence def-high-pressure def-medium-low-pressure def-field-defence def-conversion off-phase-1 off-phase-2 off-phase-3 off-conversion def-standards off-standards');
+        switch (phase_id) {
+            case PHASE_DEF_HIGH_PRESSURE:
+                body.addClass('def-high-pressure defence');
+                break;
+            case PHASE_DEF_MEDIUM_LOW_PRESSURE:
+                body.addClass('def-medium-low-pressure defence');
+                break;
+            case PHASE_DEF_FIELD_DEFENCE:
+                body.addClass('def-field-defence defence');
+                break;
+            case PHASE_DEF_CONVERSION:
+                body.addClass('def-conversion defence');
+                break;
+            case PHASE_OFF_PHASE_1:
+                body.addClass('off-phase-1 offence');
+                break;
+            case PHASE_OFF_PHASE_2:
+                body.addClass('off-phase-2 offence');
+                break;
+            case PHASE_OFF_PHASE_3:
+                body.addClass('off-phase-3 offence');
+                break;
+            case PHASE_OFF_CONVERSION:
+                body.addClass('off-conversion offence');
+                break;
+            case PHASE_DEF_STANDARDS:
+                body.addClass('def-standards defence');
+                break;
+            case PHASE_OFF_STANDARDS:
+                body.addClass('off-standards offence');
+                break;
+        }
+    }
+
     handlePhaseSelection(phase_id, phase_cat){
         this.setState({phaseCategorySelection: phase_cat, phaseSelection: phase_id},function(){
             this.refs.datahandler.update(this.state);
         });
 
-        let body = $('body');
-        body.removeClass('defence');
-        body.removeClass('offence');
-        switch(phase_cat){
-            case PHASE_DEF:
-                body.addClass('defence');
-                break;
-            case PHASE_OFF:
-                body.addClass('offence');
-                break;
-            default:
-                console.log("NULL");
-                break;
-        }
+        this.addBodyClasses(phase_id);
     }
 
     handlePhaseDom(phase_id){
+        this.addBodyClasses(phase_id);
         switch (phase_id) {
             case PHASE_DEF_HIGH_PRESSURE:
                 return <PhaseDefHighPressureAcc theme={"theme-1"}/>
@@ -189,14 +215,14 @@ export default class Player extends React.Component {
 
                     {this.state.phaseSelection ? (
                         <div className="row">
-                            <div className="col-xs-11 offset-1 col-lg-4 col-xl-4 offset-lg-2 offset-xl-2">
+                            <div className="col-xs-11 offset-xs-0 offset-sm-0 offset-md-0 col-lg-6 col-xl-5 offset-lg-0 offset-xl-2">
                                 <h3 className={'chosen-phase-title'}>{getPhaseTitle(this.state.phaseSelection)}</h3>
                             </div>
 
                             {this.state.playerSelection &&
-                                <div className="col-xl-5 toggle-role-bottons">
+                                <div className="col-sm-12 col-md-4 col-lg-6 col-xl-5 toggle-role-bottons">
                                     <Button className={`${"theme-"+this.state.phaseCategorySelection} btn btn-primary${this.state.isVisibleTeamRole ? " btn-highlight" : ""}`} handleClick={() => this.handleRoleToggle(0)}>
-                                        <FontAwesomeIcon icon={faUsers} /> Holdets rolle
+                                        <FontAwesomeIcon icon={faUsers} /> Holdets principper
                                     </Button>
                                     <Button className={`${"theme-"+this.state.phaseCategorySelection} btn btn-primary${this.state.isVisiblePlayerRole ? " btn-highlight" : ""}`} handleClick={() => this.handleRoleToggle(1)}>
                                         <FontAwesomeIcon icon={faUser} /> Din rolle
@@ -226,26 +252,30 @@ export default class Player extends React.Component {
 
 
                     <div className="row full-height">
-                        <div className="col-xl-6">
+                        <div className="col-xs-11 offset-xs-0 offset-sm-0 offset-md-0 col-lg-6 col-xl-5 offset-lg-0 offset-xl-2">
                             <Pitch externalOverlay={this.state.externalOverlay} phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
                         {this.state.phaseSelection && isMobile ? (
-                                <ModalElement icon={"users"} title={"Holdets rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
+                                <ModalElement icon={"users"} title={"Holdets principper"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
                                     <div className="col-xl-5 content-col">
                                         {this.handlePhaseDom(this.state.phaseSelection)}
                                     </div>
                                 </ModalElement>
                         )
                         : this.state.playerObject && this.state.phaseSelection && this.state.isVisiblePlayerRole ? (
-                                <div className={`${"theme-"+this.state.phaseCategorySelection} col-xl-5 content-col player-role-content`}>
-                                    <h3>{getPlayerPosString(this.state.playerSelection)}</h3>
-                                    <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                                <div className={"col-sm-12 col-md-4 col-lg-6 col-xl-5"}>
+                                    <div className={`${"theme-"+this.state.phaseCategorySelection} content-col player-role-content`}>
+                                        <h3>{getPlayerPosString(this.state.playerSelection)}</h3>
+                                        <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                                    </div>
                                 </div>
                         )
                         : this.state.phaseSelection && this.state.isVisibleTeamRole ? (
-                                <div className="col-xl-5 content-col">
-                                    {this.handlePhaseDom(this.state.phaseSelection)}
+                                <div className="col-sm-12 col-md-4 col-lg-6 col-xl-5">
+                                    <div className="content-col">
+                                        {this.handlePhaseDom(this.state.phaseSelection)}
+                                    </div>
                                 </div>
                         )
                         : ""}

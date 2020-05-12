@@ -14,6 +14,8 @@
     color: $white;
     @include boxSize();
     left:0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
   }
 }
 
@@ -23,11 +25,75 @@
   }
 }
 
+
+/*Move players according to phases chosen*/
+/*
+def-high-pressure
+def-medium-low-pressure
+def-field-defence
+def-conversion
+off-phase-1
+off-phase-2
+off-phase-3
+off-conversion
+def-standards
+off-standards
+*/
+
+/*
+keeper              -> #k
+center back         -> #cb_1_ , #cb
+full back           -> #fb_1_ , #fb
+center midtfielder  -> #cmf_1_ , #cmf
+midtfielder         -> #mf_1_ , #mf
+striker             -> #s_1_ , #s
+*/
 body.defence{
   .player{
     .chosen-phase-title{
       color: $mainRed;
     }
+  }
+
+  &.def-high-pressure{
+    @include getKeeperPos(def-high-pressure);
+    @include getStrikerPos(def-high-pressure);
+    @include getCenterMidfielderPos(def-high-pressure);
+    @include getMidfielderPos(def-high-pressure);
+    @include getCenterBackPos(def-high-pressure);
+    @include getFullBackPos(def-high-pressure);
+  }
+  &.def-medium-low-pressure{
+    @include getKeeperPos(def-medium-low-pressure);
+    @include getStrikerPos(def-medium-low-pressure);
+    @include getCenterMidfielderPos(def-medium-low-pressure);
+    @include getMidfielderPos(def-medium-low-pressure);
+    @include getCenterBackPos(def-medium-low-pressure);
+    @include getFullBackPos(def-medium-low-pressure);
+  }
+  &.def-field-defence{
+    @include getKeeperPos(def-field-defence);
+    @include getStrikerPos(def-field-defence);
+    @include getCenterMidfielderPos(def-field-defence);
+    @include getMidfielderPos(def-field-defence);
+    @include getCenterBackPos(def-field-defence);
+    @include getFullBackPos(def-field-defence);
+  }
+  &.def-conversion{
+    @include getKeeperPos(def-conversion);
+    @include getStrikerPos(def-conversion);
+    @include getCenterMidfielderPos(def-conversion);
+    @include getMidfielderPos(def-conversion);
+    @include getCenterBackPos(def-conversion);
+    @include getFullBackPos(def-conversion);
+  }
+  &.def-standards{
+    @include getKeeperPos(def-standards);
+    @include getStrikerPos(def-standards);
+    @include getCenterMidfielderPos(def-standards);
+    @include getMidfielderPos(def-standards);
+    @include getCenterBackPos(def-standards);
+    @include getFullBackPos(def-standards);
   }
 }
 
@@ -38,9 +104,51 @@ body.offence{
     }
   }
 
-  .player-svg{
+  &.off-phase-1{
+    @include getKeeperPos(off-phase-1);
+    @include getStrikerPos(off-phase-1);
+    @include getCenterMidfielderPos(off-phase-1);
+    @include getMidfielderPos(off-phase-1);
+    @include getCenterBackPos(off-phase-1);
+    @include getFullBackPos(off-phase-1);
+  }
+  &.off-phase-2{
+    @include getKeeperPos(off-phase-2);
+    @include getStrikerPos(off-phase-2);
+    @include getCenterMidfielderPos(off-phase-2);
+    @include getMidfielderPos(off-phase-2);
+    @include getCenterBackPos(off-phase-2);
+    @include getFullBackPos(off-phase-2);
+  }
+  &.off-phase-3{
+    @include getKeeperPos(off-phase-3);
+    @include getStrikerPos(off-phase-3);
+    @include getCenterMidfielderPos(off-phase-3);
+    @include getMidfielderPos(off-phase-3);
+    @include getCenterBackPos(off-phase-3);
+    @include getFullBackPos(off-phase-3);
+  }
+  &.off-conversion{
+    @include getKeeperPos(off-conversion);
+    @include getStrikerPos(off-conversion);
+    @include getCenterMidfielderPos(off-conversion);
+    @include getMidfielderPos(off-conversion);
+    @include getCenterBackPos(off-conversion);
+    @include getFullBackPos(off-conversion);
+  }
+  &.off-standards{
+    @include getKeeperPos(off-standards);
+    @include getStrikerPos(off-standards);
+    @include getCenterMidfielderPos(off-standards);
+    @include getMidfielderPos(off-standards);
+    @include getCenterBackPos(off-standards);
+    @include getFullBackPos(off-standards);
+  }
+
+
+  /*.player-svg{
     .player-btn{
       transform: translateY(-215px);
     }
-  }
+  }*/
 }
