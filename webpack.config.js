@@ -54,7 +54,13 @@ module.exports = {
             { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-            { test: /\.mp4$/, loader: 'file-loader'},
+            {
+                test: /\.mp4$/,
+                loader: 'file-loader',
+                query: {
+                    name: 'data/video/[hash].[ext]'
+                }
+            },
             {
                 test: /\.(jpg|png|jpeg|gif|svg)$/,
                 use: {
@@ -86,7 +92,7 @@ module.exports = {
             "Tether": 'tether'
         }),
 /*        new CopyWebpackPlugin([
-            {from:'eval.json',to:'eval.json'}
+            {from:'data/video',to:'data/video'}
         ]),*/
     ]
 };
