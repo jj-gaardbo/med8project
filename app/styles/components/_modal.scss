@@ -1,6 +1,10 @@
 .modal-dialog{
   .modal-content{
     border-radius: 0;
+
+    video{
+      width: 100%;
+    }
   }
 
   &.theme-2{
@@ -42,5 +46,33 @@
 
   .list-group, .list-group-item{
     border: none;
+  }
+}
+
+.list-group-item.has-btn{
+  p{
+    width: 90%;
+    display: inline-block;
+    float: left;
+  }
+  .modal-btn{
+    float: left;
+    margin-left: 10px;
+  }
+
+  &.multi{
+    p{
+      width: 80%;
+      display: inline-block;
+      float: left;
+    }
+  }
+}
+
+.modal-auto{
+  min-width: 1040px;
+
+  @include queryThis($sm){
+    min-width: auto;
   }
 }

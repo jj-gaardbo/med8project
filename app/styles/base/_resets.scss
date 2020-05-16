@@ -72,6 +72,14 @@ body{
 
 .btn-primary{
 	background-color: $mainBlue;
+
+	&.off{
+		background-color: $mainBlue;
+	}
+
+	&.def{
+		background-color: $mainRed;
+	}
 }
 
 .btn-warning{
@@ -96,3 +104,4 @@ body {
 	min-height: 100%;
 	transition: background-color 0.1s linear;
 }
+
