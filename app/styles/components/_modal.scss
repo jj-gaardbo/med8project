@@ -43,20 +43,21 @@
     background-color: $mainBlue;
     color: $white;
   }
-
-  .list-group, .list-group-item{
-    border: none;
-  }
 }
 
-.list-group-item.has-btn{
+.list-group, .list-group-item{
+  border: none;
+}
+
+.list-group-item.has-btn, span.has-btn{
   p{
     width: 90%;
     display: inline-block;
     float: left;
   }
   .modal-btn{
-    float: left;
+    float: right;
+    margin-top: -5px;
     margin-left: 10px;
   }
 

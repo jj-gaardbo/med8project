@@ -267,7 +267,7 @@ export default class Player extends React.Component {
                                 <div className={"col-sm-12 col-md-4 col-lg-6 col-xl-5"}>
                                     <div className={`${"theme-"+this.state.phaseCategorySelection} content-col player-role-content`}>
                                         <h3>{getPlayerPosString(this.state.playerSelection)}</h3>
-                                        <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
+                                        {this.state.playerObject.toHtml(this.state.phaseSelection)}
                                     </div>
                                 </div>
                         )

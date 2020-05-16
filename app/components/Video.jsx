@@ -27,6 +27,7 @@ class VideoElement extends Component {
             <video id={this.props.id} muted controls={true} className="example-video">
                 <source src={this.props.videoURL.default} type="video/mp4" />
                 <source src={this.props.videoURL.default} type="video/ogg" />
+                <source src={this.props.videoURL.default} type="video/mov" />
                 Your browser does not support the video tag.
             </video>
         )
