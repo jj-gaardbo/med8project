@@ -50,7 +50,7 @@ export default class Eval extends React.Component {
         body += "<td>"+this.state.minutesPassed+"</td>";
         body += "<td>"+this.state.dateString+"</td>";
         body += "<td>"+pos+"</td>";
-        body += "<td>"+this.props.mouseclicks+"</td>";
+        body += "<td>"+this.props.mouseclicks+" ("+ localStorage.getItem('clicksCount') +")</td>";
         body += "</tr>";
         body += "</table>";
         return body;
@@ -86,6 +86,11 @@ export default class Eval extends React.Component {
             let timestamp = Math.floor(date.getTime() / 1000);
             this.setState({now:timestamp, minutesPassed:this.timediff(this.state.timestamp, timestamp), lastMouseClick:this.props.mouseclicks, isOpen:isOpen});
             $('body').addClass("stop-count");
+            if(typeof localStorage.getItem('clicksCount') === 'undefined'){
+                localStorage.setItem('clicksCount', this.props.mouseclicks);
+            } else if (localStorage.getItem('clicksCount') < this.props.mouseclicks){
+                localStorage.setItem('clicksCount', this.props.mouseclicks);
+            }
         } else {
             $('body').removeClass("stop-count");
         }
@@ -121,7 +126,7 @@ export default class Eval extends React.Component {
                             </tr>
                         }
                         <tr>
-                            <td>Clicks: </td><td>{this.props.mouseclicks}</td>
+                            <td>Clicks: </td><td>{this.props.mouseclicks} ({localStorage.getItem('clicksCount')})</td>
                         </tr>
                         </tbody>
                     </table>

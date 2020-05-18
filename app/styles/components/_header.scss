@@ -40,9 +40,32 @@
 
 .toggle-role-bottons{
   padding: 20px;
+
+  @include queryThis($xs){
+    z-index: 5;
+    padding: 10px;
+    position: absolute;
+    height: 50px;
+    top: 40px;
+  }
   button{
+    &:first-child{
+      float: left;
+      margin-right: 10px;
+      @include queryThis($xs){
+        margin-left: 50px;
+        float: left;
+        margin-right: 5px;
+      }
+    }
     &:last-child{
-      float: right;
+      float: left;
+      @include queryThis($xs){
+        float: left;
+      }
+    }
+    @include queryThis($xs){
+      font-size: 0.6em;
     }
   }
 }

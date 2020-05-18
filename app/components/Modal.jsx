@@ -3,8 +3,13 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {getPhaseTitle} from "./Common.jsx";
 import ButtonModal from "./ButtonModal.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faUser, faUsers, faSignInAlt, faPlay} from '@fortawesome/free-solid-svg-icons'
-
+import { faUser, faUsers, faSignInAlt, faPlay, faWindowMaximize} from '@fortawesome/free-solid-svg-icons'
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 import {modalOpenCheck} from "./Common.jsx";
 
 export default class ModalElement extends React.Component{
@@ -42,6 +47,8 @@ export default class ModalElement extends React.Component{
             return(<FontAwesomeIcon icon={faSignInAlt} />);
         } else if(icon === "play"){
             return(<FontAwesomeIcon icon={faPlay} />);
+        } else if(icon === "content"){
+            return(<FontAwesomeIcon icon={faWindowMaximize} />);
         }
     }
 
@@ -49,16 +56,20 @@ export default class ModalElement extends React.Component{
         const {
             title,
             phaseSelection,
-            className
+            className,
+            mobile
         } = this.props;
 
         const phaseString = getPhaseTitle(phaseSelection)
 
         return(
-            <div className={"modal-button"}>
-                <ButtonModal title={title} handleClick={this.toggle} className={`btn btn-primary modal-btn ${this.state.isOpen ? "modal-is-open" : ""} ${this.props.theme}`}>
+            <div className={`${isMobile ? 'mob-modal ' : ''}modal-button`}>
+                <ButtonModal title={title} handleClick={this.toggle} className={`btn btn-primary modal-btn ${this.state.isOpen ? "modal-is-open" : ""} ${mobile ? "mobile-modal-content" : ""} ${this.props.theme}`}>
                     {this.props.icon &&
                         this.getIcon(this.props.icon)
+                    }
+                    {!this.props.icon && title &&
+                        <strong>{title}</strong>
                     }
                 </ButtonModal>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggle} className={"modal-component modal-auto " + className}>

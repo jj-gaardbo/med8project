@@ -9,6 +9,12 @@ import {
 import FrontPage from "./FrontPage.jsx";
 import Player from "./Player.jsx";
 import Navigation from "../components/Navigation.jsx";
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 /**
  * This file handles all the routings between the different pageWrappers
@@ -33,9 +39,15 @@ export default class Main extends React.Component {
         let self = this;
         $('body').on('click', function(){
             if(!$(this).hasClass('stop-count')){
-                self.setState({mouseclicks:self.state.mouseclicks+1});
+                let clicks = self.state.mouseclicks+1;
+                self.setState({mouseclicks:clicks});
             }
         });
+
+        if(isMobile){
+            $('body').addClass('mobile-view')
+        }
+
     }
 
     render() {

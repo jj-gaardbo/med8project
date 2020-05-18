@@ -8,6 +8,12 @@ import IndgaaIGennembrudskombinationer from "../data/video/Afslutningsspil/Angri
 import KommeIAfslutningspositioner from "../data/video/Afslutningsspil/Angriber/KommeIAfslutningspositioner.mp4"
 import KommeIAfslutningspositioner2 from "../data/video/Afslutningsspil/Angriber/KommeIAfslutningspositioner2.mp4"
 import ModstanderByggerOpMedTre from "../data/video/Def organisation/MiddelPres/Kant/ModstanderByggerOpMedTre.mp4"
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 export default class PlayerRole{
 
@@ -84,11 +90,19 @@ export default class PlayerRole{
                             {typeof el === 'object' ? (
                                 <span key={idx} className={`has-btn phase_item_${phase_id}${el.video.length > 1 ? ' multi':''}`}>
                                     <p>{el.str}</p>
-                                    {el.video.map((str, mIndex) =>
-                                        <ModalElement key={mIndex} className={phase_id > 13 ? 'theme-2' : 'theme-1'} theme={phase_id > 13 ? 'off' : 'def'} icon={"play"} title={el.str}>
-                                            {self.getVideo(str, phase_id, index, idx)}
-                                        </ModalElement>
-                                    )}
+                                    {el.video.map((str, mIndex) => (
+                                        <div>
+                                            {!isMobile ? (
+                                                <ModalElement key={mIndex} className={phase_id > 13 ? 'theme-2' : 'theme-1'} theme={phase_id > 13 ? 'off' : 'def'} icon={"play"} title={el.str}>
+                                                    {self.getVideo(str, phase_id, index, idx)}
+                                                </ModalElement>
+                                            ) : (
+                                                <div>
+                                                    {self.getVideo(str, phase_id, index, idx)}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
                                 </span>
                             ) : (
                                 <span key={idx} className={'phase_item_'+phase_id}>

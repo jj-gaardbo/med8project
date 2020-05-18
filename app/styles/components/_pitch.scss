@@ -9,6 +9,8 @@
 .pitch{
   position: relative;
   width: 100%;
+  top: calc(50vh - 65px);
+  transform: translateY(-50%);
   height: $pitchHeight;
   max-width: 500px;
   @include boxShadow();
@@ -20,11 +22,16 @@
   @include queryThis($lg){
     float: none;
     margin: 0 auto;
-    height: $pitchHeightSM;
   }
 
   @include queryThis($xs){
+    float: right;
     width: 300px;
+    height: $pitchHeightSM;
+    top: 50vh;
+    transform: translateY(-60%);
+    position: absolute;
+    left: 60px;
   }
 
   .playerPos{
@@ -49,6 +56,7 @@
 
   img{
     max-width: 100%;
+    min-height: 100%;
     position: absolute;
     left:0;
     top: 0;
@@ -123,12 +131,14 @@
 
 .content-col{
   height: $pitchHeight;
+  margin-top: 40px;
   width: 97%;
   overflow-y: scroll;
   @include boxSize();
   padding: 20px;
   -ms-overflow-style: none;
   @include boxShadow();
+
 
   @include queryThis($md){
     width: 100%;
@@ -149,6 +159,9 @@
 
 .content-col::-webkit-scrollbar {
   display: none;
+  @include queryThis($md){
+    display: block;
+  }
 }
 
 .defence .content-col{

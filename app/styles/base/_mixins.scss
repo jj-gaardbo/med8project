@@ -27,10 +27,6 @@ $xxl: 'min-width: 1366px';
     left: 0;
     width: 100%;
     transition: all 0.5s ease;
-
-    @include queryThis($xs){
-      height:60.4vh;
-    }
   }
 
   &.defence:before{
@@ -122,13 +118,39 @@ $xxl: 'min-width: 1366px';
   background: none;
   color: $white;
 
+  button.close{
+    span{
+      color: $white;
+    }
+  }
+
   &>ul li{
     background: none;
+  }
+
+  h3{
+    color: $mainBlue;
+  }
+
+  .mindset{
+    h3{
+      color: $white;
+    }
   }
 
   ul li{
     border-color: none!important;
     border-radius: 0!important;
+
+    @include queryThis($sm){
+      color: $mainBlue;
+    }
+  }
+
+  @include queryThis($sm){
+    .mindset ul li, .mindset h3{
+      color: $white;
+    }
   }
 
   .accordion{
@@ -213,6 +235,12 @@ $xxl: 'min-width: 1366px';
   color: $mainRed;
   background: none;
 
+  button.close{
+    span{
+      color: $mainRed;
+    }
+  }
+
   .modal-content{
     background-color: $white;
 
@@ -229,6 +257,18 @@ $xxl: 'min-width: 1366px';
         background-color: $mainRed;
         color: $white;
       }
+    }
+  }
+
+  ul li{
+    @include queryThis($sm){
+      color: $mainRed;
+    }
+  }
+
+  @include queryThis($sm){
+    .mindset ul li, .mindset h3{
+      color: $white;
     }
   }
 
@@ -307,7 +347,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'def-medium-low-pressure' {
     #s_1_.player-btn , #s.player-btn{
-      transform: translateY(80px);
+      transform: translateY(60px);
     }
   } @else if $phase == 'def-field-defence' {
     #s_1_.player-btn , #s.player-btn{
@@ -319,7 +359,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'off-phase-2' {
     #s_1_.player-btn , #s.player-btn{
-      transform: translateY(-50px);
+      transform: translateY(-120px);
     }
   } @else if $phase == 'off-phase-3' {
     #s_1_.player-btn , #s.player-btn{
@@ -340,7 +380,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'def-medium-low-pressure' {
     #cmf_1_.player-btn, #cmf.player-btn{
-      transform: translateY(80px);
+      transform: translateY(50px);
     }
   } @else if $phase == 'def-field-defence' {
     #cmf_1_.player-btn, #cmf.player-btn{
@@ -373,7 +413,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'def-medium-low-pressure' {
     #mf_1_.player-btn, #mf.player-btn{
-      transform: translateY(80px);
+      transform: translateY(50px);
     }
   } @else if $phase == 'def-field-defence' {
     #mf_1_.player-btn, #mf.player-btn{
@@ -405,7 +445,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'def-medium-low-pressure' {
     #cb_1_.player-btn, #cb.player-btn{
-      transform: translateY(60px);
+      transform: translateY(20px);
     }
   } @else if $phase == 'def-field-defence' {
     #cb_1_.player-btn, #cb.player-btn{
@@ -417,7 +457,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'off-phase-2' {
     #cb_1_.player-btn, #cb.player-btn{
-      transform: translateY(-120px);
+      transform: translateY(-80px);
     }
   } @else if $phase == 'off-phase-3' {
     #cb_1_.player-btn, #cb.player-btn{
@@ -437,7 +477,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'def-medium-low-pressure' {
     #fb_1_.player-btn, #fb.player-btn{
-      transform: translateY(60px);
+      transform: translateY(20px);
     }
   } @else if $phase == 'def-field-defence' {
     #fb_1_.player-btn, #fb.player-btn{
@@ -449,7 +489,7 @@ $xxl: 'min-width: 1366px';
     }
   } @else if $phase == 'off-phase-2' {
     #fb_1_.player-btn, #fb.player-btn{
-      transform: translateY(-120px);
+      transform: translateY(-80px);
     }
   } @else if $phase == 'off-phase-3' {
     #fb_1_.player-btn, #fb.player-btn{

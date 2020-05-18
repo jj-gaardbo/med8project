@@ -225,7 +225,7 @@ export default class Player extends React.Component {
                                         <FontAwesomeIcon icon={faUsers} /> Holdets principper
                                     </Button>
                                     <Button className={`${"theme-"+this.state.phaseCategorySelection} btn btn-primary${this.state.isVisiblePlayerRole ? " btn-highlight" : ""}`} handleClick={() => this.handleRoleToggle(1)}>
-                                        <FontAwesomeIcon icon={faUser} /> Din rolle
+                                        <FontAwesomeIcon icon={faUser} /> Rollebeskrivelse
                                     </Button>
                                 </div>
                             }
@@ -240,7 +240,7 @@ export default class Player extends React.Component {
 
 {/*                    <HeaderComponent>
                         {this.state.playerObject && this.state.phaseSelection &&
-                        <ModalElement icon={"user"} title={"Din rolle"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
+                        <ModalElement icon={"user"} title={"Rollebeskrivelse"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
                             <div dangerouslySetInnerHTML={{__html: this.state.playerObject.toHtml(this.state.phaseSelection)}}/>
                         </ModalElement>
                         }
@@ -256,9 +256,18 @@ export default class Player extends React.Component {
                             <Pitch externalOverlay={this.state.externalOverlay} phaseSelection={this.state.phaseSelection} phaseCategory={this.state.phaseCategorySelection} handlePlayerSelection={this.handlePlayerSelection} />
                         </div>
 
-                        {this.state.phaseSelection && isMobile ? (
-                                <ModalElement icon={"users"} title={"Holdets principper"} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
-                                    <div className="col-xl-5 content-col">
+
+                        {isMobile && this.state.phaseSelection && this.state.playerObject && this.state.isVisiblePlayerRole ? (
+                            <ModalElement mobile={true} icon={'user'} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
+                                <div className="offset-xs-3 col-xs-9 offset-sm-3 col-sm-9 col-xl-5 content-col mobile">
+                                    <h3>{getPlayerPosString(this.state.playerSelection)}</h3>
+                                    {this.state.playerObject.toHtml(this.state.phaseSelection)}
+                                </div>
+                            </ModalElement>
+                        )
+                        : isMobile && this.state.phaseSelection ? (
+                                <ModalElement mobile={true} icon={'users'} phaseSelection={this.state.phaseSelection} className={"theme-"+this.state.phaseCategorySelection}>
+                                    <div className="offset-xs-3 col-xs-9 offset-sm-3 col-sm-9 col-xl-5 content-col mobile">
                                         {this.handlePhaseDom(this.state.phaseSelection)}
                                     </div>
                                 </ModalElement>

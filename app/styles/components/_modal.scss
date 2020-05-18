@@ -77,3 +77,34 @@
     min-width: auto;
   }
 }
+
+.mobile-view{
+  .modal-dialog{
+    top: auto!important;
+    transform: none!important;
+  }
+
+  .mobile-modal-content{
+    position: absolute;
+    font-size: 0.8em;
+    top: 48px;
+    right: 16px;
+    z-index: 5;
+    strong{
+      font-size: 0.8em;
+    }
+
+    .content-col {
+      height: auto;
+    }
+    button.close{
+      position: relative;
+      z-index: 99;
+    }
+
+  }
+
+  .list-group, .list-group-item{
+    background: none!important;
+  }
+}

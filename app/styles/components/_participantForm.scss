@@ -31,6 +31,7 @@
 
 .eval{
   .modal-button .modal-btn{
+    z-index: 9999;
     @include boxShadow();
     border-radius: 50%;
     border-color: $black;

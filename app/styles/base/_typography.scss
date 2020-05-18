@@ -5,6 +5,12 @@ strong, p,li, i, td, h1, h2, h3, h4, h5, h6, td, th{
   transition: color 1s ease;
 }
 
+strong, p,li, i, td, th{
+  @include queryThis($xs){
+    font-size: 8pt!important;
+  }
+}
+
 h1, h2, h3, h4, h5, h6{
   font-family: "HelveticaNeue-Bold", Arial, sans-serif;
   font-weight: 500;
@@ -13,21 +19,21 @@ h1, h2, h3, h4, h5, h6{
 h1{
   font-size: 26pt;
   @include queryThis($xs){
-    font-size: 22pt;
+    font-size: 18pt;
   }
 }
 
 h2{
   font-size: 24pt;
   @include queryThis($xs){
-    font-size: 20pt;
+    font-size: 16pt;
   }
 }
 
 h3{
   font-size: 22pt;
   @include queryThis($xs){
-    font-size: 16pt;
+    font-size: 14pt;
   }
 }
 
