@@ -75,10 +75,20 @@ body{
 
 	&.off{
 		background-color: $mainBlue;
+
+		&:hover{
+			background-color: $lighterBlue;
+			color: $white;
+		}
 	}
 
 	&.def{
 		background-color: $mainRed;
+
+		&:hover{
+			background-color: $lighterRed;
+			color: $white!important;
+		}
 	}
 }
 

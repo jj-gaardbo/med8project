@@ -164,6 +164,10 @@ $xxl: 'min-width: 1366px';
       button{
         color: $white;
         background-color: $mainBlue;
+
+        &:hover{
+          background-color: $lighterBlue;
+        }
       }
 
       &.active-acc{
@@ -171,6 +175,12 @@ $xxl: 'min-width: 1366px';
           transition: none;
           background-color: $white;
           color: $mainBlue;
+
+          span{
+            &:after{
+              border-color: $mainBlue;
+            }
+          }
         }
       }
     }
@@ -181,6 +191,9 @@ $xxl: 'min-width: 1366px';
         border-color: $goalieColor;
         button{
           background-color: $goalieColor;
+          &:hover{
+            background-color: $lighterGoalieColor;
+          }
         }
       }
     }
@@ -222,12 +235,17 @@ $xxl: 'min-width: 1366px';
     background-color: $mainBlue;
     color: $white;
     border-color: $white;
+    &:hover{
+      background-color: $lighterBlue;
+      border-color: $lighterBlue;
+      color: $white;
+    }
   }
 
   &.btn-highlight{
-    border-color: $white;
-    color: $mainBlue;
-    background-color: $white;
+    border-color: $white!important;
+    color: $mainBlue!important;
+    background-color: $white!important;
   }
 }
 
@@ -285,6 +303,12 @@ $xxl: 'min-width: 1366px';
           transition: none;
           background-color: $white;
           color: $mainRed;
+
+          span{
+            &:after{
+              border-color: $mainRed;
+            }
+          }
         }
       }
     }
@@ -297,12 +321,17 @@ $xxl: 'min-width: 1366px';
     background-color: $mainRed;
     color: $white;
     border-color: $mainRed;
+    &:hover{
+      background-color: $lighterRed;
+      border-color: $lighterRed;
+      color: $white;
+    }
   }
 
   &.btn-highlight{
-    border-color: $mainRed;
-    color: $mainRed;
-    background-color: $white;
+    border-color: $mainRed!important;
+    color: $mainRed!important;
+    background-color: $white!important;
   }
 }
 

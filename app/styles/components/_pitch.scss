@@ -120,8 +120,16 @@
     position: absolute;
     z-index: 10;
     margin: 5px;
-    bottom: 0;
-    border-radius: 50%;
+    bottom: -60px;
+    border-color: $black;
+    background-color: $black;
+    color: $white;
+    transition: all 0.3s ease;
+
+    &:hover{
+      background-color:rgb(20,20,20);
+      border-color:rgb(20,20,20);
+    }
 
     &.btn-channels{
       right: 0;

@@ -29,7 +29,7 @@ export default class Pitch extends React.Component {
             chosenPhase: null,
             chosenPosition: null,
             timer: null,
-            timeout: 4000,
+            timeout: 5000,
             progressTimer: null
         }
 
@@ -114,29 +114,32 @@ export default class Pitch extends React.Component {
 
                 <DefStdFreekick className={`overlay field-defence ${this.state.overlays[5] ? "shown" : "hidden"}`}/>
 
-                <TooltipElement
-                    element={<Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /></Button>}
+                <Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /> Kanaler</Button>
+                {/*<TooltipElement
+                    element={<Button className={"btn btn-primary btn-overlay btn-channels"} handleClick={() => this.toggleOverlay(1)}><FontAwesomeIcon icon={faVectorSquare} /> Kanaler</Button>}
                     tip={<p>Kanaler</p>}
                     target={"channels"}
                     placement={"left"}
-                />
+                />*/}
 
                 {this.props.phaseCategory === 1 &&
-                    <TooltipElement
-                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
+                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faLocationArrow} /> Hvor på banen?</Button>
+                    /*<TooltipElement
+                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(2)}><FontAwesomeIcon icon={faLocationArrow} /> Hvor på banen?</Button>}
                         tip={<p>Hvor på banen?</p>}
                         target={"def-zones-tip"}
                         placement={"right"}
-                    />
+                    />*/
                 }
 
                 {this.props.phaseCategory === 2 &&
-                    <TooltipElement
-                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faLocationArrow} /></Button>}
+                    <Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faLocationArrow} /> Hvor på banen?</Button>
+                    /*<TooltipElement
+                        element={<Button className={"btn btn-primary btn-overlay"} handleClick={() => this.toggleOverlay(3)}><FontAwesomeIcon icon={faLocationArrow} /> Hvor på banen?</Button>}
                         tip={<p>Hvor på banen?</p>}
                         target={"off-zones-tip"}
                         placement={"right"}
-                    />
+                    />*/
                 }
 
             </div>
